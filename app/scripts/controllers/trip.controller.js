@@ -7,11 +7,11 @@
 
   angular
     .module('hackathonApp')
-    .controller('RouteController',RouteController);
+    .controller('TripController', TripController);
 
-  RouteController.$inject = ['commonShareService', '$scope', '$mdDialog', '$rootScope'];
+  TripController.$inject = ['commonShareService', '$scope', '$mdDialog', '$rootScope'];
 
-  function RouteController(commonShareService, $scope, $mdDialog, $rootScope){
+  function TripController(commonShareService, $scope, $mdDialog, $rootScope){
     var vm = this,
       destinationList = [];
     vm.routesCreated = [];
