@@ -1,0 +1,40 @@
+<md-dialog class="create-route-popup" aria-label="Create your route">
+  <form>
+	  <md-toolbar>
+	    <div class="md-toolbar-tools">
+	      <h2>Create your route</h2>
+	      <span flex></span>
+	      <md-button class="md-icon-button" ng-click="vm.cancel()">
+	        <md-icon md-font-library="material-icons">close</md-icon>
+	      </md-button>
+	    </div>
+	  </md-toolbar>
+	  <md-dialog-content >
+		   <md-content layout-padding class="autoScroll">
+
+			  <md-input-container>
+			    <label>Title</label>
+			    <input required ng-model="vm.routeModel.title" type="text">
+			  </md-input-container>
+
+			  <md-input-container>
+			    <label>Description</label>
+			    <input ng-model="vm.routeModel.description" type="text">
+			  </md-input-container>
+
+			  <md-input-container flex>
+			    <label>Number of people</label>
+			    <input  type="number" step="any" name="rate" ng-model="vm.routeModel.totalMember" min="0" max="50">
+			  </md-input-container>
+
+			  
+			  <div class="md-actions" layout="row">
+			    <span flex></span>
+			    <md-button class="md-raised md-warn" ng-click="vm.answer('cancel')">Cancel</md-button>
+			    <md-button class="md-raised md-primary" ng-click="vm.confirmRoute(vm.routeModel)">Create</md-button>
+			  </div>
+
+			</md-content>
+	   </md-dialog-content>
+  </form>
+</md-dialog>
