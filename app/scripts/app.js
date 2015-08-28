@@ -38,8 +38,8 @@ angular
       })
       .state('route',{
         url: '/route',
-        templateUrl: 'views/route-management.html',
-        controller: 'RouteController',
+        templateUrl: 'views/trip-management.html',
+        controller: 'TripController',
         controllerAs: 'vm'
       })
       .state('login', {
