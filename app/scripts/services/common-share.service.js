@@ -14,13 +14,13 @@
 
     function commonShareService($http, $window) {
       var _loginInfo = null,
-        _routes = null;
+        _trips = null;
 
         return {
             getLoginInfo: getLoginInfo,
             setLoginInfo: setLoginInfo,
-            getRoutes: getRoutes,
-            setRoutes: setRoutes,
+            getTrips: getTrips,
+            setTrips: setTrips,
             getDestination: getDestination,
             getUsers: getUsers
         };
@@ -48,24 +48,24 @@
           $window.sessionStorage.loginInfo = str;
         }
 
-        function getRoutes(){
-          if (!_routes) {
-            var value = $window.sessionStorage.routes;
-            _routes = value ? JSON.parse(value) : angular.copy(data_routes);
+        function getTrips(){
+          if (!_trips) {
+            var value = $window.sessionStorage.trips;
+            _trips = value ? JSON.parse(value) : angular.copy(data_trips);
           }
-          return _routes;
+          return _trips;
         }
 
-        function setRoutes(param){
+        function setTrips(param){
           var str = param;
           if (param) {
               str = JSON.stringify(param);
           }
-          _routes = param;
+          _trips = param;
           if(param === null){
-            $window.sessionStorage.removeItem('routes');
+            $window.sessionStorage.removeItem('trips');
           } else{
-            $window.sessionStorage.routes = str;
+            $window.sessionStorage.trips = str;
           }
         }
 

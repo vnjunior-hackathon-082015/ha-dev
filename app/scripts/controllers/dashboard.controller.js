@@ -23,7 +23,7 @@
           //==================== Function declaration ====================
           function activate(){
             $rootScope.activeTab = 'dashboard';
-            vm.listTrips = commonShareService.getRoutes();
+            vm.listTrips = commonShareService.getTrips();
             vm.listTrips.reverse();
             vm.destinationList = commonShareService.getDestination();
             for(var k = 0; k < vm.listTrips.length; k++){
@@ -62,7 +62,7 @@
 
           function onJoinTrip(trip){
             var loginInfo = commonShareService.getLoginInfo();
-            loginInfo.routesJoined.push(trip.routeId);
+            loginInfo.tripsJoined.push(trip.tripId);
             commonShareService.setLoginInfo(loginInfo);
           }
 
