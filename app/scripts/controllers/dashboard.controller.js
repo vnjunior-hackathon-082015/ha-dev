@@ -15,10 +15,11 @@
 
     function DashboardCtrl($scope, $mdDialog, $rootScope, $q, commonShareService, uiGmapGoogleMapApi, uiGmapIsReady, emiratesAPIs){
           var vm = this;
-          vm.message = 'Hellow Dashboard';
+          vm.message = 'Hello Dashboard';
           vm.onCommentButton = onCommentButton;
           vm.onJoinTrip = onJoinTrip;
           vm.maps = [];
+          var locationOffers = [];
           activate();
 
           //==================== Function declaration ====================
@@ -41,6 +42,13 @@
 
               var allPromise = $q.all(promises);
               allPromise.then(function(responses) {
+                // Get Location Offers
+                var offerPromises = [];
+                for(var i = 0; i < vm.destinationList.length; i++){
+                  var offerPromise = emiratesAPIs.getCardOfferByArea(vm.destinationList[i].latt, vm.destinationList[i].longtt, 100);
+                  offerPromises.push(offerPromise);
+                }
+
                 vm.partnerTrips = [];
                 for(var i = 0; i < responses.length; i++){
                   var responseData = responses[i].data;
@@ -76,6 +84,7 @@
                         vm.partnerTrips[k].destinations[i].address = vm.destinationList[j].address;
                         vm.partnerTrips[k].destinations[i].description = vm.destinationList[j].description;
                         vm.partnerTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+
                         break;
                       }
                     }
@@ -102,12 +111,47 @@
                         vm.listTrips[k].destinations[i].address = vm.destinationList[j].address;
                         vm.listTrips[k].destinations[i].description = vm.destinationList[j].description;
                         vm.listTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+                        angular.forEach(locationOffers, function(offer){
+                          if (offer.location ==  vm.destinationList[j].id){
+                            vm.listTrips[k].destinations[i].offers.push(offer);
+                          }
+                        });
                         break;
                       }
                     }
                   }
                 }
 
+                var allOfferPromise = $q.all(offerPromises);
+                allOfferPromise.then(function(responses) {
+                  for (var i = 0; i < vm.destinationList.length; i++) {
+                    angular.forEach(responses[i].data['Offer'], function (offer) {
+                      offer.location = vm.destinationList[i].id;
+                      locationOffers.push(offer);
+                    });
+                  }
+                  for (var i = 0; i < vm.partnerTrips.length; i++){
+                    for(var j = 0; j < vm.partnerTrips[i].destinations.length; j++){
+                      vm.partnerTrips[i].destinations[j].offers = [];
+                      angular.forEach(locationOffers, function(offer){
+                        if (offer.location ==  vm.partnerTrips[i].destinations[j].locationId){
+                          vm.partnerTrips[i].destinations[j].offers.push(offer);
+                        }
+                      });
+                    }
+                  }
+
+                  for (var i = 0; i < vm.listTrips.length; i++){
+                    for(var j = 0; j < vm.listTrips[i].destinations.length; j++){
+                      vm.listTrips[i].destinations[j].offers = [];
+                      angular.forEach(locationOffers, function(offer){
+                        if (offer.location ==  vm.listTrips[i].destinations[j].locationId){
+                          vm.listTrips[i].destinations[j].offers.push(offer);
+                        }
+                      });
+                    }
+                  }
+                });
 
 
                 // google Map
@@ -126,7 +170,7 @@
                     var directionsDisplay = new google.maps.DirectionsRenderer();
                     directionsDisplays.push(directionsDisplay);
                     myMaps.push(map);
-                    
+
                     var orig;
                     var dest;
                     var waypoints = [];
@@ -156,7 +200,7 @@
 
                     directionsDisplay.setMap(map);
 
-                
+
                     console.log(listTrips.destinations[0].locationName + '-' + listTrips.destinations[listTrips.destinations.length-1].locationName, orig, dest, waypoints);
 
                     (function(myIndex) {
