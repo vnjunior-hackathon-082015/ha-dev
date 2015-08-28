@@ -22,7 +22,7 @@ angular
     'vAccordion',
     'ui.bootstrap.datetimepicker'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
     $stateProvider
       .state('home',{
