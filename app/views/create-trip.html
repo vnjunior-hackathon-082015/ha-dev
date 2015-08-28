@@ -38,7 +38,10 @@
 		          md-min-length="0"
 		          placeholder="Select a hotel">
 		        <md-item-template>
-		          <span md-highlight-text="vm.hotelSearchText" md-highlight-flags="^i">{{item.destination}}</span>
+		         <div class="hotel-item">
+			        <div md-highlight-text="vm.hotelSearchText" md-highlight-flags="^i" class="hotel-name">{{item.destination}}</div>
+			        <div class="hotel-address">{{item.address}}</div>
+		         </div>
 		        </md-item-template>
 		       </md-content>
 
