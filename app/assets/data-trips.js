@@ -380,7 +380,7 @@ var data_trips = [
         ]
     },
     {
-        "tripeId": 7,
+        "tripId": 7,
         "avatarURL": "images/avatar/hien_pham.jpg",
         "title": "Dubai Museum Tour",
         "description": "nostrud elit sint tempor velit occaecat cupidatat adipisicing",

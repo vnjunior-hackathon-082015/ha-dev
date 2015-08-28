@@ -55,7 +55,7 @@
               </li>
               <li ng-class="{'active': activeTab == 'home'}"><a ui-sref="home">Home</a></li>
               <li ng-class="{'active': activeTab == 'dashboard'}"><a ng-href="#/dashboard">dashboard</a></li>
-              <li ng-class="{'active': activeTab == 'route'}"
+              <li ng-class="{'active': activeTab == 'trip'}"
                   ng-show="loginInfo.username.length > 0">
                   <a ng-href="#/trip">Manage trip</a>
               </li>
@@ -132,8 +132,8 @@
         <script src="scripts/services/common-share.service.js"></script>
 
         <script src="scripts/controllers/login.controller.js"></script>
-        <script src="scripts/controllers/trip.controller.js"></script>
-        <script src="scripts/controllers/logout.controller.js"></script>
+        <script src="scripts/controllers/login-dialog.controller.js"></script>
+        <script src="scripts/controllers/trip.controller.js"></script>        <script src="scripts/controllers/logout.controller.js"></script>
         <script src="scripts/controllers/dashboard.controller.js"></script>
         <!-- endbuild -->
         <script src="scripts/controllers/HomeController.js"></script>

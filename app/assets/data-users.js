@@ -6,8 +6,8 @@ var data_users = [
         "username": "dat_nguyen",
         "avatarURL": "images/avatar/dat_nguyen.jpg",
         "pnr": "ABC001",
-        "routesCreated": [],
-        "routesJoined": []
+        "tripsCreated": [],
+        "tripsJoined": []
     },
     {
         "id": 2,
@@ -16,8 +16,8 @@ var data_users = [
         "username": "luu_le",
         "avatarURL": "images/avatar/luu_le.jpg",
         "pnr": "ABC003",
-        "routesCreated": [],
-        "routesJoined": []
+        "tripsCreated": [],
+        "tripsJoined": []
     },
     {
         "id": 3,
@@ -26,10 +26,10 @@ var data_users = [
         "username": "hien_pham",
         "avatarURL": "images/avatar/hien_pham.jpg",
         "pnr": "ABC002",
-        "routesCreated": [
+        "tripsCreated": [
             1
         ],
-        "routesJoined": [
+        "tripsJoined": [
             1
         ]
     },
@@ -40,10 +40,10 @@ var data_users = [
         "username": "hung_thai",
         "avatarURL": "images/avatar/hung_thai.jpg",
         "pnr": "ABC004",
-        "routesCreated": [
+        "tripsCreated": [
             2
         ],
-        "routesJoined": [
+        "tripsJoined": [
             2
         ]
     },
@@ -54,11 +54,11 @@ var data_users = [
         "username": "anh_diep",
         "avatarURL": "images/avatar/anh_diep.jpg",
         "pnr": "ABC005",
-        "routesCreated": [
+        "tripsCreated": [
             3,
             4
         ],
-        "routesJoined": [
+        "tripsJoined": [
             3,
             4
         ]

@@ -1,0 +1,38 @@
+<md-dialog aria-label="Login">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Login</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="answer('not applicable')">
+      <md-icon md-font-library="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div>
+      <md-content layout-padding class="autoScroll">
+        <label ng-show="vm.message.length > 0" ng-class="{'success-message': vm.isLoggedIn, 'error-message': !vm.isLoggedIn}">{{error}}</label>
+        <md-input-container class="md-icon-float" >
+          <!-- Use floating label instead of placeholder -->
+          <label>First name</label>
+          <md-icon md-font-library="material-icons">person</md-icon>
+          <input ng-model="vm.name" type="text">
+        </md-input-container>
+        <md-input-container class="md-icon-float" >
+          <!-- Use floating label instead of placeholder -->
+          <label>PNR</label>
+          <md-icon md-font-library="material-icons">vpn_key</md-icon>
+          <input ng-model="vm.pnr" type="text">
+        </md-input-container>
+    </md-content>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row" layout-align="center center">
+    <md-button class="md-raised md-primary" ng-click="vm.login()">Login</md-button>
+    <md-button ng-click="vm.cancel()" style="margin-right:20px;">
+      Cancel
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
