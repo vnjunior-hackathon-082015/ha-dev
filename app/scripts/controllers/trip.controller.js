@@ -14,8 +14,6 @@
   function TripController(commonShareService, $scope, $mdDialog, $rootScope){
     var vm = this,
       destinationList = [];
-    vm.tripsCreated = [];
-    vm.tripsJoined = [];
     vm.createTrip = createTrip;
     vm.onCommentButton = onCommentButton;
 
@@ -36,6 +34,8 @@
       vm.currentUserInfo = commonShareService.getLoginInfo();
       vm.tripsData = commonShareService.getTrips();
       vm.tripsData.reverse();
+      vm.tripsCreated = [];
+      vm.tripsJoined = [];
       vm.tripsData.forEach(function(trip){
         vm.currentUserInfo.tripsCreated.forEach(function(tripId){
           if(trip.tripId == tripId){
