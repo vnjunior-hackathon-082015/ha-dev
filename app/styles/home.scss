@@ -1,3 +1,17 @@
+.bubble{
+	min-height: 600px;
+    
+}
+.info{
+	background-color: #FFFFFF;
+}
+.hello-text{
+	font-size: 24px;
+    font-weight: bold;
+    margin: 15px 49px;
+    color: white;
+    font-family: GeosansLight;
+}
 .head-title{
 	font-family: ‘Lucida Console’, Monaco, monospace;
     font-size: 22px;
@@ -12,3 +26,283 @@
 	font-family: Century Gothic, sans-serif;
     padding-top: 15px;
 }
+.circle-200{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+
+}
+.circle-150{
+	width: 150px;
+	height: 150px;
+
+}
+.circle-100{
+	width: 100px;
+	height: 100px;
+
+}
+
+.circle-125{
+	width: 125px;
+	height: 125px;
+
+}
+
+.circle-50{
+	width: 50px;
+	height: 50px;
+
+}
+.circle{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: blue;
+	position: absolute;
+	outline: none;
+
+}
+.circle:hover{
+	transition:all 0.3s ease;
+	-webkit-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        transform: scale(1.3);
+    z-index: 99999;
+}
+
+.circleSelected{
+	transition:all 0.2s ease;
+	box-shadow: inset 0 0 0 3px #0D65DA;
+}
+
+.circle-matrix{
+    margin: 20px 5px;
+}
+
+.content{
+
+}
+
+.decription{
+
+}
+.title{
+	font-weight: bold;
+    font-size: larger;
+    margin-bottom: 10px;
+}
+.des{
+
+}
+.icon1{
+	    left: 7%;
+    top: 28px;
+}
+
+.icon2{
+	left: 31%;
+    top: 97px;
+}
+
+.icon3{
+	left: 46%;
+	top: 8px;
+}
+
+.icon4{
+	left: 68%;
+	top: 69px;
+}
+
+.icon5{
+	left: 53%;
+	top: 162px;
+}
+
+.icon6{
+	top: 199px;
+}
+
+.icon7{
+	top: 215px;
+	left: 18%;
+}
+
+.icon8{
+	top: 208px;
+	left: 38%;
+}
+
+.icon9{
+	left: 0%;
+	top: 318px;
+}
+
+.icon10{
+	left: 30%;
+	top: 329px;;
+}
+
+.icon11{
+	left: 50%;
+	top: 320px;
+}
+
+.icon12{
+	left: 75%;
+	top: 264px;
+}
+.icon13{
+	left: 85%;
+    top: 7px;
+}
+.icon14{
+	left: 76%;
+    top: 394px;
+}
+.icon15{
+	left: 28%;
+    top: -4px;
+}
+.icon16{
+	left: 83%;
+    top: 146px;
+}
+
+.img-dubai-mall{
+	background: url("../images/dubai-img/dubai-mall-1.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -1px;
+    background-position-x: -103px;
+}
+
+.img-dubai-fountaint{
+	background: url("../images/dubai-img/dubai-fountain-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position-y: -1px; */
+    background-position-x: -7px;
+}
+
+.img-mall-emirates{
+	background: url("../images/dubai-img/mall-emirates-1.jpg");
+    background-size:  100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-gold-souk{
+	background: url("../images/dubai-img/gold-souk-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-miracle-garden{
+	background: url("../images/dubai-img/miracle-garden-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    background-position-x: -7px;
+}
+
+.img-global-village{
+	background: url("../images/dubai-img/global-village-3.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+.img-burj-khalifa{
+	background: url("../images/dubai-img/burj-khalifa-2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-palm-islands{
+	background: url("../images/dubai-img/palm-islands-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+}
+
+.img-burj-khalifa{
+	background: url("../images/dubai-img/burj-khalifa-2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+.img-marina-mall{
+	background: url("../images/dubai-img/marina-mall-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+   
+}
+
+.img-marina-yach{
+	background: url("../images/dubai-img/marina-yach-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+   
+}
+
+.img-skidubai{
+	background: url("../images/dubai-img/skidubai-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-wild-wadi{
+	background: url("../images/dubai-img/wild-wadi-2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-world-islands{
+	background: url("../images/dubai-img/world-islands-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-attlantis{
+	background: url("../images/dubai-img/attlantis-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-burj-al-arab{
+	background: url("../images/dubai-img/burj-al-arab-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-ibn-battuta-mall{
+	background: url("../images/dubai-img/ibn-battuta-mall-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-dubai-museum{
+	background: url("../images/dubai-img/dubai-museum-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-palm-islands{
+	background: url("../images/dubai-img/palm-islands-1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+ @font-face { font-family: Comforaa; font-weight: lighter; src: url('../assets/font/Comfortaa-Light.ttf'); } 
+ @font-face { font-family: Comforaa; font-weight: bold; src: url('../assets/font/Comfortaa-Bold.ttf');}
+ @font-face { font-family: Comforaa; src: url('../assets/font/Comfortaa-Regular.ttf');}
+ @font-face { font-family: GeosansLightOblique; src: url('../assets/font/GeosansLight-Oblique.ttf'); } 
+ @font-face { font-family: GeosansLight; font-weight: light; src: url('../assets/font/GeosansLight.ttf');}
+/*.img-skidubai{
+	background: url("../images/dubai-img/skidubai-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    background-position-x: -7px;
+}*/

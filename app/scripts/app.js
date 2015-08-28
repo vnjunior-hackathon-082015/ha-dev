@@ -35,7 +35,7 @@ angular
         views: {
           'bubble@home':{
               templateUrl: 'views/bubble.html',
-              controller: '',
+              controller: 'BubbleController',
           },
           'info@home':{
               templateUrl: 'views/info.html',
