@@ -1,0 +1,126 @@
+.trip-card{
+    position: relative;
+    margin-top: 60px;
+    box-shadow: none;
+    -moz-border-image: url("../images/border4.png") 35 round round;
+    -webkit-border-image: url("../images/border4.png") 35 round round;
+    border-image: url("../images/border4.png") 35 round round;
+    border-width: 35px;
+    background: none;
+
+    md-card-content, md-card-footer, div.md-actions{
+        background-color: #ECEABB;
+    }
+
+    .avatar{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        border-radius: 50%;
+        border: gray 2px double;
+    }
+    md-card-content{
+        padding-left: 30px;
+        .fullname{
+            margin-left: 70px;
+            border-bottom: 1px solid #DADADA;
+            font-weight: bold;
+            font-size: 15px
+        }
+        .trip-title{
+            font-weight: bold;
+            margin-left: 65px;
+        }
+        .trip-description{
+            margin-left: -15px;
+            border-radius: 30px;
+            padding: 0px;
+            .description-content{
+                /*copy from manage route*/
+                .routes{
+
+                  .route-detail{
+                    margin-left: 135px;
+                    border-left: 2px solid blue;
+                    &:last-child{
+                      border-left: none;
+                    }
+                    .date-time{
+                      display: inline-block;
+                      color: rgb(63, 81, 181);
+                      font-size: 15px;
+                      width: 75px;
+                      margin-left: -135px;
+                      max-width: 120px;
+                      text-align: center;
+                      vertical-align: top;
+                      padding-top: 31px;
+                    }
+                    .route{
+                      display: inline-block;
+                      vertical-align: baseline;
+                      width: 100px;
+                      height: 100px;
+                      padding-left: 3px;
+                      margin-left: 5px;
+                      .route-img{
+                        width: 90px;
+                        height: 90px;
+                        background-size: cover;
+                        border-radius: 50px;
+                        border: 2px solid #3f51b5;
+                      }
+                    }
+                    .route-time{
+                      display: inline-block;
+                    }
+                    .route-name{
+                      color: rgb(63, 81, 181);
+                      font-size: 20px;
+                      margin-left: 10px;
+                    }
+                    .destination-info{
+                      display: inline-block;
+                      vertical-align: middle;
+                      min-height: 150px;
+                      position: relative;
+                      .more-info{
+                        border: 1px solid rgb(160, 158, 158);
+                        border-radius: 5px;
+                        padding: 10px;
+                        min-height: 120px;
+                        margin-left: 10px;
+                      }
+                    }
+                  }
+                  .connection{
+                    width: 1px;
+                    height: 75px;
+                    border-right: 2px solid rgb(63, 81, 181);
+                    margin-left: 114px;
+                  }
+                }
+            }
+        }
+        .trip-info{
+            background: rgba(2, 42, 187, 0.27);
+            border: 1px solid gray;
+            border-radius: 10px;
+            md-icon{
+                color: blue;
+            }
+        }
+    }
+    md-card-footer.comment-section{
+        .comment-record{
+            img{
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+    }
+
+}
