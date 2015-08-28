@@ -9,9 +9,9 @@
     .module('hackathonApp')
     .controller('TripController', TripController);
 
-  TripController.$inject = ['commonShareService', '$scope', '$mdDialog', '$rootScope'];
+  TripController.$inject = ['emiratesAPIs', 'commonShareService', '$scope', '$mdDialog', '$rootScope'];
 
-  function TripController(commonShareService, $scope, $mdDialog, $rootScope){
+  function TripController(emiratesAPIs, commonShareService, $scope, $mdDialog, $rootScope){
     var vm = this,
       destinationList = [];
     vm.createTrip = createTrip;
@@ -21,6 +21,7 @@
 
     //==================== Function declaration ====================
     function activate(){
+
       $rootScope.activeTab = 'trip';
 
       getTripsData();
