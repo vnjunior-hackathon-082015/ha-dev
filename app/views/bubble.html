@@ -1,0 +1,62 @@
+<!-- <p><spa class="glyphicon glyphicon-heart"></span> from the hackathon with love</p> -->
+<div class="home">
+
+	<div class="hello-text" class="col-sm-12 col-md-12 col-lg-12">
+		<span>YOU ARE IN DUBAI! ONE OF THE BEST IMPRESSION CITY IN THE WORLD....</span>
+	</div>
+
+	<div class="circle-matrix col-sm-6 col-md-6 col-lg-6">
+		<span ng-class="isSelected(3)?'circleSelected':''" class="circle-150 circle icon1 img-dubai-mall"
+		 ng-click="select(3)"></span>
+		<span ng-class="isSelected(1)?'circleSelected':''" class="circle-100 circle icon2 img-dubai-fountaint" 
+		ng-click="select(1)"></span>
+		<span ng-class="isSelected(7)?'circleSelected':''" class="circle-125 circle icon3 img-marina-yach" 
+		ng-click="select(7)"></span>
+		<span ng-class="isSelected(15)?'circleSelected':''" class="circle-100 circle icon4 img-gold-souk" 
+		ng-click="select(15)"></span>
+		<span ng-class="isSelected(2)?'circleSelected':''" class="circle-150 circle icon5 img-burj-khalifa" 
+		ng-click="select(2)"></span>
+		<span ng-class="isSelected(8)?'circleSelected':''" class="circle-100 circle icon6 img-miracle-garden" 
+		ng-click="select(8)"></span>
+		<span ng-class="isSelected(9)?'circleSelected':''" class="circle-125 circle icon7 img-skidubai" 
+		ng-click="select(9)"></span>
+		<span ng-class="isSelected(16)?'circleSelected':''" class="circle-100 circle icon8 img-global-village" 
+		ng-click="select(16)"></span>
+		<span ng-class="isSelected(6)?'circleSelected':''" class="circle-150 circle icon9 img-wild-wadi" 
+		ng-click="select(6)"></span>
+		<span ng-class="isSelected(5)?'circleSelected':''" class="circle-125 circle icon10 img-attlantis" 
+		ng-click="select(5)"></span>
+		<span ng-class="isSelected(4)?'circleSelected':''" class="circle-150 circle icon11 img-burj-al-arab" 
+		ng-click="select(4)"></span>
+		<span ng-class="isSelected(10)?'circleSelected':''" class="circle-100 circle icon12 img-ibn-battuta-mall" 
+		ng-click="select(10)"></span>
+		<span ng-class="isSelected(11)?'circleSelected':''" class="circle-100 circle icon13 img-dubai-museum" 
+		ng-click="select(11)"></span>
+		<span ng-class="isSelected(15)?'circleSelected':''" class="circle-100 circle icon14 img-world-islands" ng-click="select(15)"></span>
+		<span ng-class="isSelected(12)?'circleSelected':''" class="circle-100 circle icon15 img-palm-islands" ng-click="select(12)"></span>
+		<span ng-class="isSelected(13)?'circleSelected':''" class="circle-100 circle icon16 img-marina-mall" ng-click="select(13)"></span>
+
+	</div>
+
+	<div class="content col-sm-5 col-md-5 col-lg-5">
+		<div id="carousel-section" style="height: 305px; width: 100%">
+			<carousel interval="5000" no-wrap="false">
+				<slide ng-repeat="slide in selectedObj.photoList">
+					<img ng-src="{{slide}}" width="600" height="300" style="margin:auto; height: 300px">
+					<div class="carousel-caption">
+					</div>
+				</slide>
+			</carousel>
+		</div>
+		<div class="decription">
+			<div class="title">
+				<span> {{selectedObj.destination}}</span>
+				<!-- THE SAHARA DESERT EXPERIENCE -->
+			</div>
+			<div class="des">
+				{{selectedObj.description;}}
+				
+			</div>
+		</div>
+	</div>
+</div>

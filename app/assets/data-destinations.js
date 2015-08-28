@@ -48,7 +48,7 @@ var data_destinations = [
         "longtt": 55.11913,
         "latt": 25.13187,
         "photo": "AquaventureWaterpark.jpg",
-        "photoList": ["images/dubai-img/attlantis-1","images/dubai-img/attlantis-2", "images/dubai-img/attlantis-3"]
+        "photoList": ["images/dubai-img/attlantis-1.jpg","images/dubai-img/attlantis-2.jpg", "images/dubai-img/attlantis-3.jpg"]
     },
     {
         "id": 6,

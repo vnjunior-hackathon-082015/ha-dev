@@ -92,24 +92,28 @@
               var mapInstanceNumber = inst.instance; // Starts at 1.
 
               var directionsService = new google.maps.DirectionsService;
-              var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+              // var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+              var directionsDisplay = new google.maps.DirectionsRenderer();
+
+              var orig = new google.maps.LatLng(25.00727, 54.98734);
+              var dest = new google.maps.LatLng(25.26736, 55.29685);
 
               directionsDisplay.setMap(map);
 
               directionsService.route({
-              origin: {lat: 25.00727, lng: 54.98734},
-              destination: {lat: 25.26736, lng: 55.29685},
+              origin: orig,
+              destination: dest,
               waypoints: [
                 {
-                  location: {lat: 25.13934, lng: 55.18922},
+                  location:  new google.maps.LatLng(25.13934, 55.18922),
                   stopover: true
                 },
                 {
-                  location: {lat: 25.19063, lng: 55.27386},
+                  location:  new google.maps.LatLng(25.19063, 55.27386),
                   stopover: true
                 },
                 {
-                  location: {lat: 25.11809, lng: 55.20035},
+                  location:  new google.maps.LatLng(25.11809, 55.20035),
                   stopover: true
                 }
               ],
@@ -118,11 +122,11 @@
               }, function(response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
                   directionsDisplay.setDirections(response);
-                  var legs = response.routes[ 0 ].legs;
-                  for (var i = 0; i < legs.length; i++) {
-                    var num = i+1
-                    makeMarker( legs[i].start_location, num.toString());
-                  };
+                  // var legs = response.routes[ 0 ].legs;
+                  // for (var i = 0; i < legs.length; i++) {
+                  //   var num = i+1
+                  //   makeMarker( legs[i].start_location, num.toString());
+                  // };
                 } else {
                   window.alert('Directions request failed due to ' + status);
                 }
