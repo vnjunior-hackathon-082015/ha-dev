@@ -1,19 +1,19 @@
 /**
- * Created by s727215  on 22/08/2015.
+ * Created by s727215  on 28/08/2015.
  */
 (function(){
     'use strict';
 
     angular
         .module('hackathonApp')
-        .controller('CreateRouteController', CreateRouteController);
+        .controller('CreateTripController', CreateTripController);
 
-    CreateRouteController.$inject = ["commonShareService", "$scope", "$mdDialog", "$timeout", "$q", "$log"];
+    CreateTripController.$inject = ["commonShareService", "$scope", "$mdDialog", "$timeout", "$q", "$log"];
 
-    function CreateRouteController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
+    function CreateTripController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
       var vm = this,
         _allDestinationsList;
-      vm.routeModel = {
+      vm.tripModel = {
         title: null,
         description: null,
         hostedBy: null,
@@ -32,7 +32,7 @@
         "destinations": []
       }];
       vm.onAddDestination = onAddDestination;
-      vm.confirmRoute = confirmRoute;
+      vm.confirmTrip = confirmTrip;
       activate();
 
 
@@ -99,19 +99,19 @@
          });
       };
 
-      function confirmRoute(){
+      function confirmTrip(){
         var currentUser = commonShareService.getLoginInfo();
-        var routes = commonShareService.getRoutes();
-        var routeId = routes.length + 1;
+        var trips = commonShareService.getTrips();
+        var tripId = trips.length + 1;
         var fromDate = "07:00 30/08/2015"
         var toDate = "07:00 31/08/2015"
 
 
-        var routeObj = {
-            "routeId": routeId,
+        var tripObj = {
+            "tripId": tripId,
             "avatarURL": currentUser.avatarURL,
-            "title": vm.routeModel.title,
-            "description": vm.routeModel.description,
+            "title": vm.tripModel.title,
+            "description": vm.tripModel.description,
             "tripImage": "images/dubai-img/dubai-mall-1.jpg",
             "hostedBy": (currentUser.firstName + " " + currentUser.lastName) ,
             "hostedById": currentUser.id,
@@ -119,7 +119,7 @@
             "minimumCost": 567,
             "currency": "AED",
             "totalJoined": 1,
-            "totalMember": vm.routeModel.totalMember,
+            "totalMember": vm.tripModel.totalMember,
             "fromDate": fromDate,
             "toDate": toDate,
             "destinations": [],
@@ -127,17 +127,17 @@
         };
 
         for(var i = 0; i < vm.selectedDestinations.length; i++){
-          routeObj.destinations.push({
+          tripObj.destinations.push({
             "startDate": vm.selectedDestinations[i].fromDate,
             "endDate": vm.selectedDestinations[i].toDate,
             "locationId": vm.selectedDestinations[i].destinations[0].item.id
           });
         }
-        routes.push(routeObj);
+        trips.push(tripObj);
         var loginInfo = commonShareService.getLoginInfo();
-        loginInfo.routesCreated.push(routeId);
+        loginInfo.tripsCreated.push(tripId);
         commonShareService.setLoginInfo(loginInfo);
-        commonShareService.setRoutes(routes);
+        commonShareService.setTrips(trips);
         answer();
       }
 
