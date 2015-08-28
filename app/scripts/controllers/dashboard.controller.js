@@ -122,21 +122,22 @@
                     var mapInstanceNumber = instances[i].instance; // Starts at 1.
                     var listTrips = (i >= vm.partnerTrips.length) ? vm.listTrips[i - vm.partnerTrips.length] : vm.partnerTrips[i];
                     var directionsService = new google.maps.DirectionsService;
-                    var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+                    // var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+                    var directionsDisplay = new google.maps.DirectionsRenderer();
                     directionsDisplays.push(directionsDisplay);
                     myMaps.push(map);
-                    // var directionsDisplay = new google.maps.DirectionsRenderer();
-
+                    
                     var orig;
                     var dest;
                     var waypoints = [];
 
-                    for (var j = 0; j < listTrips.destinations.length; j++) {
+                    for (var j = 1; j < listTrips.destinations.length-1; j++) {
                       for (var k = 0; k < vm.destinationList.length; k++) {
-                        if (listTrips.destinations[j].locationId == vm.destinationList[k].id && j > 0 && j < listTrips.destinations.length-1) {
+                        if (listTrips.destinations[j].locationId == vm.destinationList[k].id) {
+                          var wp = new google.maps.LatLng(vm.destinationList[k].latt, vm.destinationList[k].longtt);
                           waypoints.push(
                             {
-                              location: new google.maps.LatLng(vm.destinationList[k].latt,vm.destinationList[k].latt),
+                              location: wp,
                               stopover: true
                             }
                           );
@@ -155,21 +156,7 @@
 
                     directionsDisplay.setMap(map);
 
-                    waypoints = [
-                      {
-                        location: new google.maps.LatLng(25.13934 + i*0.01, 55.18922 + i*0.01),
-                        stopover: true
-                      },
-                      {
-                        location: new google.maps.LatLng(25.19063 + i*0.01, 55.27386 + i*0.01),
-                        stopover: true
-                      },
-                      {
-                        location: new google.maps.LatLng(25.11809 + i*0.01, 55.20035 + i*0.01),
-                        stopover: true
-                      }
-                    ];
-
+                
                     console.log(listTrips.destinations[0].locationName + '-' + listTrips.destinations[listTrips.destinations.length-1].locationName, orig, dest, waypoints);
 
                     (function(myIndex) {
@@ -184,16 +171,16 @@
                           orig, dest, waypoints);
                         if (status === google.maps.DirectionsStatus.OK) {
                           directionsDisplays[myIndex].setDirections(response);
-                          var legs = response.routes[ 0 ].legs;
-                          for (var i = 0; i < legs.length; i++) {
-                            var num = i+1;
-                            new google.maps.Marker({
-                              position: legs[i].start_location,
-                              map: myMaps[myIndex],
-                              label: num.toString()
-                            });
-                            // makeMarker( legs[i].start_location, num.toString());
-                          };
+                          // var legs = response.routes[ 0 ].legs;
+                          // for (var i = 0; i < legs.length; i++) {
+                          //   var num = i+1;
+                          //   new google.maps.Marker({
+                          //     position: legs[i].start_location,
+                          //     map: myMaps[myIndex],
+                          //     label: num.toString()
+                          //   });
+                          //   // makeMarker( legs[i].start_location, num.toString());
+                          // };
                         } else {
                           // window.alert('Directions request failed due to ' + status);
                         }
