@@ -31,7 +31,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -47,22 +47,39 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{'active': activeTab == 'login'}"
+                  ng-hide="loginInfo.username.length > 0">
+                  <a ng-href="#/">Login</a>
+              </li>
+              <li ng-class="{'active': activeTab == 'home'}"><a ui-sref="home">Home</a></li>
+              <li ng-class="{'active': activeTab == 'dashboard'}"><a ng-href="#/dashboard">dashboard</a></li>
+              <li ng-class="{'active': activeTab == 'route'}"
+                  ng-show="loginInfo.username.length > 0">
+                  <a ng-href="#/route">Manage route</a>
+              </li>
+              <li ng-class="{'active': activeTab == 'logout'}"
+                  ng-show="loginInfo.username.length > 0">
+                  <a ng-href="#/logout">Logout</a>
+              </li>
+              <li class="ng-hide"><a ng-href="#/test-skyscanner">Test Skyscanner</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" ng-show="loginInfo.username.length > 0">Welcome {{loginInfo.firstName
+ + " " + lastName}}</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div class="container-fluid main-content">
+    <div ui-view=""></div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div class="container-fluid">
+        <p><span class="glyphicon glyphicon-heart"></span> from the hackathon with love</p>
       </div>
     </div>
 
