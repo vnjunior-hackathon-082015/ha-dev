@@ -1,0 +1,23 @@
+body .header{
+    margin-bottom: 0;
+
+    .navbar{
+        margin-bottom: 0;
+    }
+}
+.main-content{
+    background: url("../images/background/sahara_desert_sand_dunes-wide.jpg") no-repeat fixed;
+    background-size: cover;
+    min-height: calc(100% - 52px)
+}
+
+
+.success-message{
+    color: greeen;
+    font-weight: bold;
+}
+
+.error-message{
+    color: red;
+    font-weight: bold;
+}
