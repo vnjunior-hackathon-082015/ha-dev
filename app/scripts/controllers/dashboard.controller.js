@@ -16,6 +16,7 @@
     function DashboardCtrl($scope, $mdDialog, $rootScope, commonShareService){
           var vm = this;
           vm.message = 'Hellow Dashboard';
+          vm.onCommentButton = onCommentButton;
           vm.onJoinTrip = onJoinTrip;
           activate();
 
@@ -40,12 +41,46 @@
             }
           }
 
+          function onCommentButton(index){
+            var currentTrip = vm.listTrips[index];
+            if(currentTrip.showCommentSection && currentTrip.activeComment && currentTrip.activeComment.length > 0){
+              $rootScope.loginInfo = commonShareService.getLoginInfo();
+              if($rootScope.loginInfo){
+                currentTrip.comments.push({
+                        fullname: $rootScope.loginInfo.fullname,
+                        avatarURL: $rootScope.loginInfo.avatarURL,
+                        comment: currentTrip.activeComment
+                    });
+                currentTrip.activeComment = '';
+              } else{
+                login();
+              }
+            } else{
+              currentTrip.showCommentSection = !currentTrip.showCommentSection;
+            }
+          }
+
           function onJoinTrip(trip){
             var loginInfo = commonShareService.getLoginInfo();
             loginInfo.routesJoined.push(trip.routeId);
             commonShareService.setLoginInfo(loginInfo);
           }
 
+          function login(event) {
+            $mdDialog.show({
+              controller: 'LoginDialogController',
+              controllerAs: 'vm',
+              templateUrl: 'views/login-dialog.tmpl.html',
+              parent: angular.element(document.body),
+              // targetEvent: event,
+              clickOutsideToClose:true
+            })
+            .then(function(answer) {
+              //Login success
+            }, function() {
+              //Dialog was cancelled
+            });
+          };
     }
 
 
