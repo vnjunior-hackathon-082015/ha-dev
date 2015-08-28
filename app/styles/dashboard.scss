@@ -60,7 +60,7 @@
                     }
                     .trip{
                       display: inline-block;
-                      vertical-align: baseline;
+                      vertical-align: top;
                       width: 100px;
                       height: 100px;
                       padding-left: 3px;
@@ -92,6 +92,7 @@
                         padding: 10px;
                         min-height: 120px;
                         margin-left: 10px;
+                        margin-bottom: 25px;
                       }
                     }
                   }
