@@ -15,24 +15,56 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMaterial',
+    'ui.router',
+    'ui.bootstrap',
+    'vAccordion',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider
+      .state('home',{
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('dashboard',{
+        url: '/dashboard',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'vm'
       })
-      .when('/route', {
+      .state('route',{
+        url: '/route',
         templateUrl: 'views/route-management.html',
         controller: 'RouteController',
         controllerAs: 'vm'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+      .state('login', {
+        url: '/',
+        templateUrl: 'views/login.tmpl.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+      })
+      .state('logout', {
+        url: '/logout',
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'vm'
+      })
+      .state('test-skyscanner', {
+        url: '/test-skyscanner',
+        templateUrl: 'views/test-skyscanner.html',
+        controller: 'TestSkyscannerController',
+        controllerAs: 'vm'
+      })
+      ;
+  })
+  .config(function($mdIconProvider){
+    $mdIconProvider
+       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+;
