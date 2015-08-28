@@ -56,7 +56,8 @@
       $scope.$watch("date", function(value) {
         console.log('New date value:' + value);
       }, true);
-      
+
+
 
       //========== Function declaration ====================
       function activate(){
@@ -85,6 +86,61 @@
       }
 
 
+      function getDestinationsList(){
+        return commonShareService.getDestination().map(function(item,index){
+          var contact = {
+            item: item,
+            destination: item.destination,
+            address: item.address,
+            image: 'images/dubai-img/'+item.photo,
+          };
+          contact._lowername = contact.destination.toLowerCase();
+          return contact;
+         });
+      };
+
+      function confirmRoute(){
+        var currentUser = commonShareService.getLoginInfo();
+        var routes = commonShareService.getRoutes();
+        var routeId = routes.length + 1;
+        var fromDate = "07:00 30/08/2015"
+        var toDate = "07:00 31/08/2015"
+
+
+        var routeObj = {
+            "routeId": routeId,
+            "avatarURL": currentUser.avatarURL,
+            "title": vm.routeModel.title,
+            "description": vm.routeModel.description,
+            "tripImage": "images/dubai-img/dubai-mall-1.jpg",
+            "hostedBy": (currentUser.firstName + " " + currentUser.lastName) ,
+            "hostedById": currentUser.id,
+            "createDate": "2015-08-29 11:11",
+            "minimumCost": 567,
+            "currency": "AED",
+            "totalJoined": 1,
+            "totalMember": vm.routeModel.totalMember,
+            "fromDate": fromDate,
+            "toDate": toDate,
+            "destinations": [],
+            "comments": []
+        };
+
+        for(var i = 0; i < vm.selectedDestinations.length; i++){
+          routeObj.destinations.push({
+            "startDate": vm.selectedDestinations[i].fromDate,
+            "endDate": vm.selectedDestinations[i].toDate,
+            "locationId": vm.selectedDestinations[i].destinations[0].item.id
+          });
+        }
+        routes.push(routeObj);
+        var loginInfo = commonShareService.getLoginInfo();
+        loginInfo.routesCreated.push(routeId);
+        commonShareService.setLoginInfo(loginInfo);
+        commonShareService.setRoutes(routes);
+        answer();
+      }
+
       function onAddDestination(){
         vm.selectedDestinations.push({
           "destinations": []
@@ -98,9 +154,6 @@
       function cancel(){
         $mdDialog.cancel();
       };
-
-
-      
     }
 
 })();
