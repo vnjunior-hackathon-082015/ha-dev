@@ -35,7 +35,7 @@
           <div class="trip-img" style="{{des.photo}}" ></div>
         </div>
         <div class="destination-info"  style="width: 90%;">
-          <div class="trip" >{{des.locationName}}</div>
+          <div class="trip-name" >{{des.locationName}}</div>
 
           <div class="more-info" >
             <p><b>Address:</b> {{des.address}}</p>
@@ -52,6 +52,8 @@
   </div>
   <v-accordion class="vAccordion--default" multiple>
 
+    <!-- add expanded attribute to open the section -->
+    <!-- <v-pane expanded> -->
     <v-pane>
       <v-pane-header>
         <md-button class="md-raised md-primary">COMMENTS</md-button>
