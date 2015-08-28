@@ -27,7 +27,35 @@
 			    <input  type="number" step="any" name="rate" ng-model="vm.routeModel.totalMember" min="0" max="50">
 			  </md-input-container>
 
-			  
+			  <!-- Add destination to route -->
+			  <md-content class="md-padding select-destination-row autocomplete" layout="row" ng-repeat="selectedDestination in vm.selectedDestinations">
+			    <md-contact-chips flex="40"
+			        ng-model="selectedDestination.destinations"
+			        md-contacts="vm.queryDestination($query)"
+			        md-contact-name="destination"
+			        md-contact-image="image"
+			        md-contact-email="address"
+			        md-require-match
+			        filter-selected="vm.filterSelected"
+			        md-selected-item-change="vm.onSelecteDestinationChange(selectedDestination.destination)"
+			        placeholder="To">
+			    </md-contact-chips>
+
+			    <datetimepicker  flex="30" min-date="vm.minDate" show-weeks="showWeeks" hour-step="vm.hourStep"
+				    minute-step="vm.minuteStep" ng-model="selectedDestination.fromDate" show-meridian="vm.showMeridian"
+				    date-format="dd-MMM-yyyy" date-options="vm.dateOptions" date-disabled="vm.disabled(date, mode)"
+				    readonly-time="false">
+				</datetimepicker>
+				<datetimepicker  flex="30" min-date="vm.minDate" show-weeks="showWeeks" hour-step="vm.hourStep"
+				    minute-step="vm.minuteStep" ng-model="selectedDestination.toDate" show-meridian="vm.showMeridian"
+				    date-format="dd-MMM-yyyy" date-options="vm.dateOptions" date-disabled="vm.disabled(date, mode)"
+				    readonly-time="false">
+				</datetimepicker>
+			  </md-content>
+
+		      <md-icon md-font-library="material-icons pull-right" ng-click="vm.onAddDestination()">add_circle</md-icon>
+			  <div style="clear:both;"></div>
+			  <!-- Add destination to route -->
 			  <div class="md-actions" layout="row">
 			    <span flex></span>
 			    <md-button class="md-raised md-warn" ng-click="vm.answer('cancel')">Cancel</md-button>
