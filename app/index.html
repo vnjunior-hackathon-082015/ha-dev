@@ -15,6 +15,11 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
   <body ng-app="gitRepoTestApp">
     <!--[if lt IE 7]>
@@ -87,12 +92,22 @@
     <script src="bower_components/v-accordion/dist/v-accordion.js"></script>
     <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
     <!-- endbower -->
+
+    <!-- Angular Meterial dependencies -->
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
 
+        <script src="assets/data-users.js"></script>
         <script src="assets/data-destinations.js"></script>
+        <script src="assets/data-routes.js"></script>
+
+        <script src="scripts/services/common-share.service.js"></script>
 
         <!-- endbuild -->
 </body>
