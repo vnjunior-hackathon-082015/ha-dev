@@ -11,14 +11,12 @@
     <div class="trip-description">
         <div class="description-content">
             <label ng-hide="isShowDetail">{{trip.description}}</label>
-
              <v-accordion class="vAccordion--default">
                 <v-pane>
                 <v-pane-header>
                   <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
                     {{isShowDetail?'Hide trip detail':'Show trip detail'}}
                   </md-button>
-                  <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-header>
                 <v-pane-content>
 
@@ -37,6 +35,7 @@
                         </div>
                       </div>
                     </div>
+                    <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                   </div>
                 </v-pane-content>
                 </v-pane>
@@ -111,7 +110,7 @@
                   <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
                     {{isShowDetail?'Hide trip detail':'Show trip detail'}}
                   </md-button>
-                  <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
+
                 </v-pane-header>
                 <v-pane-content>
 
@@ -130,8 +129,11 @@
                         </div>
                       </div>
                     </div>
+                    <ui-gmap-google-map center='vm.maps[vm.partnerTrips.length + $index].center' zoom='vm.maps[vm.partnerTrips.length + $index].zoom'></ui-gmap-google-map>
                   </div>
+
                 </v-pane-content>
+
                 </v-pane>
               </v-accordion>
 

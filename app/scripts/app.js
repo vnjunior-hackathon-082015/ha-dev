@@ -35,18 +35,33 @@ angular
         views: {
           'bubble@home':{
               templateUrl: 'views/bubble.html',
-              controller: 'BubbleController',
+              controller: 'BubbleController'
           },
           'info@home':{
               template: '<div ui-view></div>',
-              controller: '',
+              controller: ''
           }
         }
       }).state('home.intro.why',{
         url: '/why',
         templateUrl: 'views/why.html',
-        controller: '',
-      }).state('dashboard',{
+        controller: 'WhyController'
+      }).state('home.intro.tours',{
+        url: '/tours',
+        templateUrl: 'views/tours.html',
+        controller: ''
+      })
+      .state('home.intro.eligibility',{
+        url: '/eligibility',
+        templateUrl: 'views/eligibility.html',
+        controller: 'EligibilityController',
+        controllerAs: 'vm'
+      }).state('home.intro.card',{
+        url: '/card',
+        templateUrl: 'views/card-offer.html',
+        controller: 'CardOfferController',
+      })
+      .state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
