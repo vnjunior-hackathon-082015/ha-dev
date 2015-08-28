@@ -11,9 +11,9 @@
     angular.module('hackathonApp')
       .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope', '$mdDialog', '$rootScope', 'commonShareService', 'uiGmapGoogleMapApi', 'uiGmapIsReady'];
+    DashboardCtrl.$inject = ['$scope', '$mdDialog', '$rootScope', '$q', 'commonShareService', 'uiGmapGoogleMapApi', 'uiGmapIsReady', 'emiratesAPIs'];
 
-    function DashboardCtrl($scope, $mdDialog, $rootScope, commonShareService, uiGmapGoogleMapApi, uiGmapIsReady){
+    function DashboardCtrl($scope, $mdDialog, $rootScope, $q, commonShareService, uiGmapGoogleMapApi, uiGmapIsReady, emiratesAPIs){
           var vm = this;
           vm.message = 'Hellow Dashboard';
           vm.onCommentButton = onCommentButton;
@@ -25,51 +25,92 @@
           function activate(){
             $rootScope.activeTab = 'dashboard';
 
-            // var partnerTrips =  {
-            //   "TourName": [
-            //     "Sand Duning",
-            //     "Morning Sand",
-            //     "City Walk"
-            //   ]
-            // };
+            var cityName = 'Dubai';
+            var noOfPax = 5;
+            var date = '31-08-2015';
+            vm.destinationList = commonShareService.getDestination();
 
-            // var partnerTripData1 = {
-            //     "isAvailable": true,
-            //     "Price": {
-            //       "BasePrice": 400,
-            //       "Tax": 100,
-            //       "Total": 500
+            //Get Partner Trips
+            emiratesAPIs.getArabianAdventureTours(cityName).then(function(toursResponse){
+              var promises = [];
+              for(var i = 0; i < toursResponse.data.TourName.length; i++){
+                var promise = emiratesAPIs.getAdventureAvailability(date, noOfPax, toursResponse.data.TourName[i]);
+                promises.push(promise);
+              }
+
+              var allPromise = $q.all(promises);
+              allPromise.then(function(responses) {
+                vm.partnerTrips = [];
+                for(var i = 0; i < responses.length; i++){
+                  var responseData = responses[i].data;
+                  if(responseData.isAvailable){
+                    //Make the pr
+                    var obj = {};
+                    obj.minimumCost = responseData.Price.BasePrice + i;
+                    obj.tax = responseData.Price.Tax + i;
+                    obj.total = responseData.Price.Total + i;
+                    var partnerTrips = commonShareService.getPartnerTrips();
+                    for(var j = 0; j < partnerTrips.length; j++){
+                      //Right now check by name because service only return name, not id
+                      if(partnerTrips[j].title == toursResponse.data.TourName[i]){
+                        partnerTrips[j].minimumCost = obj.minimumCost;
+                        partnerTrips[j].tax = obj.tax;
+                        partnerTrips[j].total = obj.total;
+                        vm.partnerTrips.push(partnerTrips[j]);
+                      }
+                    }
+
+                  }
+                }
+
+                vm.partnerTrips.reverse();
+
+                // Add info for partner trips
+                for(var k = 0; k < vm.partnerTrips.length; k++){
+                  vm.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
+                  for (var i = 0; i < vm.partnerTrips[k].destinations.length; i++) {
+                    for (var j = 0; j < vm.destinationList.length; j++) {
+                      if (vm.partnerTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
+                        vm.partnerTrips[k].destinations[i].photo = "background-image : url('images/dubai-img/" + vm.destinationList[j].photo + "');";
+                        vm.partnerTrips[k].destinations[i].address = vm.destinationList[j].address;
+                        vm.partnerTrips[k].destinations[i].description = vm.destinationList[j].description;
+                        vm.partnerTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+                        break;
+                      }
+                    }
+                  }
+                }
+              });
+
+            });
+
+
+
+
+            // emiratesAPIs.getArabianAdventureTrips('Dubai', '31-08-2015', 5).then(function(partnerTrips){
+            //   vm.partnerTrips = partnerTrips;
+            //   vm.partnerTrips.reverse();
+
+            //   // Add info for partner trips
+            //   for(var k = 0; k < vm.partnerTrips.length; k++){
+            //     vm.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
+            //     for (var i = 0; i < vm.partnerTrips[k].destinations.length; i++) {
+            //       for (var j = 0; j < vm.destinationList.length; j++) {
+            //         if (vm.partnerTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
+            //           vm.partnerTrips[k].destinations[i].photo = "background-image : url('images/dubai-img/" + vm.destinationList[j].photo + "');";
+            //           vm.partnerTrips[k].destinations[i].address = vm.destinationList[j].address;
+            //           vm.partnerTrips[k].destinations[i].description = vm.destinationList[j].description;
+            //           vm.partnerTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+            //           break;
+            //         }
+            //       }
             //     }
-            //   },
-            //   partnerTripData2 = {
-            //     "isAvailable": true,
-            //     "Price": {
-            //       "BasePrice": 500,
-            //       "Tax": 200,
-            //       "Total": 700
-            //     }
-            //   },
-            //   partnerTripData3 = {
-            //     "isAvailable": true,
-            //     "Price": {
-            //       "BasePrice": 600,
-            //       "Tax": 300,
-            //       "Total": 900
-            //     }
-            //   };
+            //   }
+            // });
 
-            // var partnerTrips = [];
-            // partnerTrips.push(partnerTripData1);
-            // partnerTrips.push(partnerTripData2);
-            // partnerTrips.push(partnerTripData3);
-
-
-            vm.partnerTrips = tripService.getPartnerTrips();
-            vm.partnerTrips.reverse();
+            //Get Customer trips
             vm.listTrips = commonShareService.getTrips();
             vm.listTrips.reverse();
-
-            vm.destinationList = commonShareService.getDestination();
 
             //Add info for customer trips
             for(var k = 0; k < vm.listTrips.length; k++){
@@ -82,23 +123,6 @@
                     vm.listTrips[k].destinations[i].address = vm.destinationList[j].address;
                     vm.listTrips[k].destinations[i].description = vm.destinationList[j].description;
                     vm.listTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
-                    break;
-                  }
-                }
-              }
-            }
-
-            //Add info for partner trips
-            for(var k = 0; k < vm.partnerTrips.length; k++){
-              vm.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
-
-              for (var i = 0; i < vm.partnerTrips[k].destinations.length; i++) {
-                for (var j = 0; j < vm.destinationList.length; j++) {
-                  if (vm.partnerTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
-                    vm.partnerTrips[k].destinations[i].photo = "background-image : url('images/dubai-img/" + vm.destinationList[j].photo + "');";
-                    vm.partnerTrips[k].destinations[i].address = vm.destinationList[j].address;
-                    vm.partnerTrips[k].destinations[i].description = vm.destinationList[j].description;
-                    vm.partnerTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
                     break;
                   }
                 }
@@ -150,7 +174,6 @@
           /*google Map*/
 
           uiGmapIsReady.promise().then(function(instances) {
-            debugger;
             instances.forEach(function(inst) {
                 var map1 = $scope.map.control.getGMap();    // get map object through $scope.map.control getGMap() function
                 var map2 = map_instances[0].map;

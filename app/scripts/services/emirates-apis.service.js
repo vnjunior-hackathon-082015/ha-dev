@@ -10,9 +10,9 @@
     angular.module('hackathonApp')
       .service('emiratesAPIs', emiratesAPIs);
 
-    emiratesAPIs.$inject = ['$http'];
+    emiratesAPIs.$inject = ['$http', '$q', 'commonShareService'];
 
-    function emiratesAPIs($http) {
+    function emiratesAPIs($http, $q, commonShareService) {
         return {
           getTransferEligibility: getTransferEligibility,
           getArabianAdventureTours: getArabianAdventureTours,
@@ -23,6 +23,8 @@
           getCardOfferByArea: getCardOfferByArea,
           getCardOffersByCategory: getCardOffersByCategory,
           getCardOffersByDiscount: getCardOffersByDiscount
+          // ,
+          // getArabianAdventureTrips: getArabianAdventureTrips
         };
 
         //==================== Function declaration ====================
@@ -133,8 +135,48 @@
             }
           };
           return $http(req);
-        };
+        }
 
+
+        // function getArabianAdventureTrips(cityName, date, noOfPax){
+        //   return getArabianAdventureTours(cityName).then(function(toursResponse){
+        //     var promises = [];
+        //     for(var i = 0; i < toursResponse.data.TourName.length; i++){
+        //       var promise = getAdventureAvailability(date, noOfPax, toursResponse.data.TourName[i]);
+        //       promises.push(promise);
+        //     }
+
+        //     var allPromise = $q.all(promises);
+        //     allPromise.then(function(responses) {
+        //       var result = [];
+        //       for(var i = 0; i < responses.length; i++){
+        //         var responseData = responses[i].data;
+        //         if(responseData.isAvailable){
+        //           //Make the pr
+        //           var obj = {};
+        //           obj.minimumCost = responseData.Price.BasePrice + i;
+        //           obj.tax = responseData.Price.Tax + i;
+        //           obj.total = responseData.Price.Total + i;
+        //           var partnerTrips = commonShareService.getPartnerTrips();
+        //           for(var j = 0; j < partnerTrips.length; j++){
+        //             //Right now check by name because service only return name, not id
+        //             if(partnerTrips[j].title == toursResponse.data.TourName[i]){
+        //               partnerTrips[j].minimumCost = obj.minimumCost;
+        //               partnerTrips[j].tax = obj.tax;
+        //               partnerTrips[j].total = obj.total;
+        //               result.push(partnerTrips[j]);
+        //             }
+        //           }
+
+        //         }
+        //       }
+
+        //       return result;
+
+        //     });
+
+        //   });
+        // }
     }
 
 })();

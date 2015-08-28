@@ -14,7 +14,8 @@
 
     function commonShareService($http, $window) {
       var _loginInfo = null,
-        _trips = null;
+        _trips = null,
+        _partnerTrips;
 
         return {
             getLoginInfo: getLoginInfo,
@@ -22,7 +23,9 @@
             getTrips: getTrips,
             setTrips: setTrips,
             getDestination: getDestination,
-            getUsers: getUsers
+            getUsers: getUsers,
+            getPartnerTrips: getPartnerTrips,
+            setPartnerTrips: setPartnerTrips
         };
 
         //==================== Function declaration ====================
@@ -71,6 +74,27 @@
 
         function getDestination(){
           return angular.copy(data_destinations);
+        }
+
+        function getPartnerTrips(){
+          if (!_partnerTrips) {
+            var param = $window.sessionStorage.partnerTrips;
+            _partnerTrips = param ? JSON.parse(param) : angular.copy(data_arab_adventure_trips);
+          }
+          return _partnerTrips;
+        }
+
+        function setPartnerTrips(param){
+          var str = param;
+          if (param) {
+              str = JSON.stringify(param);
+          }
+          _partnerTrips = param;
+          if(param === null){
+            $window.sessionStorage.removeItem('partnerTrips');
+          } else{
+            $window.sessionStorage.partnerTrips = str;
+          }
         }
     }
 

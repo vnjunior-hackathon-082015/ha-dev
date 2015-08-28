@@ -1,6 +1,7 @@
 var data_trips = [
     {
         "tripId": 1,
+        "tripType": 1,
         "avatarURL": "images/avatar/hien_pham.jpg",
         "title": "Dubai Walking Tour",
         "description": "Walk through the Old Souq and Spice Souk before crossing Dubai Creek by Abra. Enjoy a tea and coffee break in the Al Fahidi Historical District, the oldest wind tower district this side of the Gulf and explore the cafes, shops and galleries in the area.",
@@ -63,6 +64,7 @@ var data_trips = [
     },
     {
         "tripId": 2,
+        "tripType": 1,
         "avatarURL": "images/avatar/hung_thai.jpg",
         "title": "Ski Dubai Tour",
         "description": "Snow experience in the desert. Ski school offers ski and snowboarding lessons at all levels. Two ski themed restaurants. Snow Park",
@@ -135,6 +137,7 @@ var data_trips = [
     },
     {
         "tripId": 3,
+        "tripType": 1,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Another Dubai Mall Tour",
         "description": "ut magna ea ea labore eiusmod consequat excepteur",
@@ -202,6 +205,7 @@ var data_trips = [
     },
     {
         "tripId": 4,
+        "tripType": 1,
         "avatarURL": "images/avatar/hung_thai.jpg",
         "title": "Dubai Marina Tour",
         "description": "ipsum ex sunt proident tempor sint deserunt elit",
@@ -264,6 +268,7 @@ var data_trips = [
     },
     {
         "tripId": 5,
+        "tripType": 1,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Miracle Garden Tour",
         "description": "fugiat ex quis proident nostrud nulla mollit eu",
@@ -321,6 +326,7 @@ var data_trips = [
     },
     {
         "tripId": 6,
+        "tripType": 1,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Ski Dubai Tour",
         "description": "esse nulla labore ex ex anim occaecat amet",
@@ -393,6 +399,7 @@ var data_trips = [
     },
     {
         "tripId": 7,
+        "tripType": 1,
         "avatarURL": "images/avatar/hien_pham.jpg",
         "title": "Dubai Museum Tour",
         "description": "nostrud elit sint tempor velit occaecat cupidatat adipisicing",
@@ -405,78 +412,6 @@ var data_trips = [
         "total": 553,
         "currency": "USD",
         "totalJoined": 5,
-        "totalMember": 5,
-        "fromDate": "07:00 09/09/2015",
-        "toDate": "20:00 13/09/2015",
-        "destinations": [
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 12
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 6
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 2
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 9
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 14
-            }
-        ],
-        "comments": [
-            {
-                "fullname": "Dat Nguyen",
-                "avatarURL": "images/avatar/dat_nguyen.jpg",
-                "comment": "It\"s sound good"
-            },
-            {
-                "fullname": "Hien Pham",
-                "avatarURL": "images/avatar/hien_pham.jpg",
-                "comment": "That\"s great"
-            },
-            {
-                "fullname": "Hung Thai",
-                "avatarURL": "images/avatar/hung_thai.jpg",
-                "comment": "We should visit Bur Khalifa first, after that we can go to Dubai mall, they\"re in the same area"
-            },
-            {
-                "fullname": "Luu Le",
-                "avatarURL": "images/avatar/luu_le.jpg",
-                "comment": "I\"ll be on time"
-            },
-            {
-                "fullname": "Anh Diep",
-                "avatarURL": "images/avatar/anh_diep.jpg",
-                "comment": "How many room that we will booking"
-            }
-        ]
-    },
-    {
-        "tripId": 8,
-        "avatarURL": "images/avatar/arabian-adventures.jpg",
-        "title": "Sand Duning",
-        "description": "This trip's created by Arabian Adventures",
-        "tripImage": "images/dubai-img/sand-dunning.jpg",
-        "hostedBy": "Arabian Adventures",
-        "hostedById": 6,
-        "createDate": "2015-01-25 11:35",
-        "minimumCost": 600,
-        "tax": 60,
-        "total": 660,
-        "currency": "AED",
-        "totalJoined": 2,
         "totalMember": 5,
         "fromDate": "07:00 09/09/2015",
         "toDate": "20:00 13/09/2015",
