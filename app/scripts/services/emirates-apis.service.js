@@ -27,10 +27,10 @@
 
         //==================== Function declaration ====================
 
-        function getTransferEligibility(){
+        function getTransferEligibility(flightDate, airportName, codeIATA){
           var req = {
             method: 'GET',
-            url: 'https://ec2-52-18-199-95.eu-west-1.compute.amazonaws.com:8143/transferfacilities/1.0/?FlightDate=qwe&AirportName=123&IATACode=1233',
+            url: 'https://ec2-52-18-199-95.eu-west-1.compute.amazonaws.com:8143/transferfacilities/1.0/?FlightDate='+flightDate+'&AirportName='+airportName+'&IATACode='+codeIATA,
             headers: {
               "Authorization": 'Bearer 615a3bd4d098cdbaf1508f5a5ce4fa7c',
               "Accept": 'application/json'
