@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('gitRepoTestApp', [
+  .module('hackathonApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
