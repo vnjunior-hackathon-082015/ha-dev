@@ -23,14 +23,25 @@ angular
     'ui.bootstrap.datetimepicker'
   ])
   .config(function ($routeProvider, $urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/intro');
     $stateProvider
       .state('home',{
         url: '/home',
         templateUrl: 'views/home.html',
         controller: 'HomeController'
-      })
-      .state('dashboard',{
+      }).state('home.intro',{
+        url: '/intro',
+        views: {
+          'bubble@home':{
+              templateUrl: 'views/bubble.html',
+              controller: '',
+          },
+          'info@home':{
+              templateUrl: 'views/info.html',
+              controller: '',
+          }
+        }
+      }).state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
