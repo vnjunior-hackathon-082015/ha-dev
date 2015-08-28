@@ -14,7 +14,7 @@
                   <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
                     {{isShowDetail?'Hide trip detail':'Show trip detail'}}
                   </md-button>
-                  <ui-gmap-google-map center='maps[$index].center' zoom='maps[$index].zoom'></ui-gmap-google-map>
+                  <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-header>
                 <v-pane-content>
 

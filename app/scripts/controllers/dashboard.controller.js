@@ -18,18 +18,62 @@
           vm.message = 'Hellow Dashboard';
           vm.onCommentButton = onCommentButton;
           vm.onJoinTrip = onJoinTrip;
-          $scope.maps = [];
+          vm.maps = [];
           activate();
 
           //==================== Function declaration ====================
           function activate(){
             $rootScope.activeTab = 'dashboard';
+
+            // var partnerTrips =  {
+            //   "TourName": [
+            //     "Sand Duning",
+            //     "Morning Sand",
+            //     "City Walk"
+            //   ]
+            // };
+
+            // var partnerTripData1 = {
+            //     "isAvailable": true,
+            //     "Price": {
+            //       "BasePrice": 400,
+            //       "Tax": 100,
+            //       "Total": 500
+            //     }
+            //   },
+            //   partnerTripData2 = {
+            //     "isAvailable": true,
+            //     "Price": {
+            //       "BasePrice": 500,
+            //       "Tax": 200,
+            //       "Total": 700
+            //     }
+            //   },
+            //   partnerTripData3 = {
+            //     "isAvailable": true,
+            //     "Price": {
+            //       "BasePrice": 600,
+            //       "Tax": 300,
+            //       "Total": 900
+            //     }
+            //   };
+
+            // var partnerTrips = [];
+            // partnerTrips.push(partnerTripData1);
+            // partnerTrips.push(partnerTripData2);
+            // partnerTrips.push(partnerTripData3);
+
+
+            vm.partnerTrips = tripService.getPartnerTrips();
+            vm.partnerTrips.reverse();
             vm.listTrips = commonShareService.getTrips();
             vm.listTrips.reverse();
-            vm.destinationList = commonShareService.getDestination();
-            for(var k = 0; k < vm.listTrips.length; k++){
 
-              $scope.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
+            vm.destinationList = commonShareService.getDestination();
+
+            //Add info for customer trips
+            for(var k = 0; k < vm.listTrips.length; k++){
+              vm.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
 
               for (var i = 0; i < vm.listTrips[k].destinations.length; i++) {
                 for (var j = 0; j < vm.destinationList.length; j++) {
@@ -38,6 +82,23 @@
                     vm.listTrips[k].destinations[i].address = vm.destinationList[j].address;
                     vm.listTrips[k].destinations[i].description = vm.destinationList[j].description;
                     vm.listTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+                    break;
+                  }
+                }
+              }
+            }
+
+            //Add info for partner trips
+            for(var k = 0; k < vm.partnerTrips.length; k++){
+              vm.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
+
+              for (var i = 0; i < vm.partnerTrips[k].destinations.length; i++) {
+                for (var j = 0; j < vm.destinationList.length; j++) {
+                  if (vm.partnerTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
+                    vm.partnerTrips[k].destinations[i].photo = "background-image : url('images/dubai-img/" + vm.destinationList[j].photo + "');";
+                    vm.partnerTrips[k].destinations[i].address = vm.destinationList[j].address;
+                    vm.partnerTrips[k].destinations[i].description = vm.destinationList[j].description;
+                    vm.partnerTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
                     break;
                   }
                 }
@@ -89,9 +150,10 @@
           /*google Map*/
 
           uiGmapIsReady.promise().then(function(instances) {
+            debugger;
             instances.forEach(function(inst) {
                 var map1 = $scope.map.control.getGMap();    // get map object through $scope.map.control getGMap() function
-                var map2 = map_instances[0].map;      
+                var map2 = map_instances[0].map;
               // var map = inst.map;
               // var uuid = map.uiGmap_id;
               // var mapInstanceNumber = inst.instance; // Starts at 1.
@@ -147,9 +209,9 @@
             });
           });
 
-          
-          uiGmapGoogleMapApi.then(function(maps) {
-          });
+
+          // uiGmapGoogleMapApi.then(function(maps) {
+          // });
     }
 
 
