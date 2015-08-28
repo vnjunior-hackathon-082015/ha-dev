@@ -85,7 +85,19 @@
       }
 
 
-      
+      function onAddDestination(){
+        vm.selectedDestinations.push({
+          "destinations": []
+        });
+      }
+
+      function answer(ans) {
+        $mdDialog.hide(ans);
+      };
+
+      function cancel(){
+        $mdDialog.cancel();
+      };
 
 
       
