@@ -57,7 +57,7 @@
     }
     .trip{
       display: inline-block;
-      vertical-align: baseline;
+      vertical-align: top;
       width: 100px;
       height: 100px;
       padding-left: 3px;
@@ -89,6 +89,7 @@
         padding: 10px;
         min-height: 120px;
         margin-left: 10px;
+        margin-bottom: 25px;
       }
     }
   }
@@ -138,5 +139,35 @@ md-dialog.create-trip-popup{
 .vAccordion--default {
   v-pane-header::after, v-pane-header::before {
     content: none;
+  }
+}
+
+.offer{
+  padding: 5px;
+  .offer-type{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    &.offer-type-shopping{
+      background-image: url('../images/offer/shopping.png');
+      background-size: cover;
+    }
+    &.offer-type-food{
+      background-image: url('../images/offer/food.png');
+      background-size: cover;
+    }
+    &.offer-type-travel{
+      background-image: url('../images/offer/travel.png');
+      background-size: cover;
+    }
+    &.offer-type-leisure{
+      background-image: url('../images/offer/leisure.png');
+      background-size: cover;
+    }
+  }
+  .offer-name{
+    display: inline-block;
+    vertical-align: middle;
   }
 }
