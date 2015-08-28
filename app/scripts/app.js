@@ -24,7 +24,7 @@ angular
     'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider, $urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/home/intro');
+    $urlRouterProvider.otherwise('/home/intro/why');
     $stateProvider
       .state('home',{
         url: '/home',
@@ -38,10 +38,14 @@ angular
               controller: 'BubbleController',
           },
           'info@home':{
-              templateUrl: 'views/info.html',
+              template: '<div ui-view></div>',
               controller: '',
           }
         }
+      }).state('home.intro.why',{
+        url: '/why',
+        templateUrl: 'views/why.html',
+        controller: '',
       }).state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
