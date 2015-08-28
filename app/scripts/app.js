@@ -20,17 +20,29 @@ angular
     'ui.router',
     'ui.bootstrap',
     'vAccordion',
-    'ui.bootstrap.datetimepicker'
+    'ui.bootstrap.datetimepicker',
+    'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider, $urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/intro');
     $stateProvider
       .state('home',{
         url: '/home',
         templateUrl: 'views/home.html',
         controller: 'HomeController'
-      })
-      .state('dashboard',{
+      }).state('home.intro',{
+        url: '/intro',
+        views: {
+          'bubble@home':{
+              templateUrl: 'views/bubble.html',
+              controller: '',
+          },
+          'info@home':{
+              templateUrl: 'views/info.html',
+              controller: '',
+          }
+        }
+      }).state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
@@ -66,5 +78,12 @@ angular
     $mdIconProvider
        .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
        .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyAEwUlCClGHBkr-HXghLhJ_IdXf_Q-7O2c',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+    });
   })
 ;
