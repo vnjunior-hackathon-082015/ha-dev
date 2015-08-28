@@ -1,6 +1,6 @@
 .bubble{
 	min-height: 600px;
-    
+
 }
 .info{
 	background-color: #FFFFFF;
@@ -223,7 +223,7 @@
 	background: url("../images/dubai-img/palm-islands-1.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    
+
 }
 
 .img-burj-khalifa{
@@ -237,14 +237,14 @@
 	background: url("../images/dubai-img/marina-mall-1.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-   
+
 }
 
 .img-marina-yach{
 	background: url("../images/dubai-img/marina-yach-1.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-   
+
 }
 
 .img-skidubai{
@@ -295,10 +295,10 @@
     background-repeat: no-repeat;
 }
 
- @font-face { font-family: Comforaa; font-weight: lighter; src: url('../assets/font/Comfortaa-Light.ttf'); } 
+ @font-face { font-family: Comforaa; font-weight: lighter; src: url('../assets/font/Comfortaa-Light.ttf'); }
  @font-face { font-family: Comforaa; font-weight: bold; src: url('../assets/font/Comfortaa-Bold.ttf');}
  @font-face { font-family: Comforaa; src: url('../assets/font/Comfortaa-Regular.ttf');}
- @font-face { font-family: GeosansLightOblique; src: url('../assets/font/GeosansLight-Oblique.ttf'); } 
+ @font-face { font-family: GeosansLightOblique; src: url('../assets/font/GeosansLight-Oblique.ttf'); }
  @font-face { font-family: GeosansLight; font-weight: light; src: url('../assets/font/GeosansLight.ttf');}
 /*.img-skidubai{
 	background: url("../images/dubai-img/skidubai-1.jpg");
@@ -307,3 +307,45 @@
     background-position-y: 0px;
     background-position-x: -7px;
 }*/
+
+.eligibility{
+  border: 1px solid rgb(181, 178, 178);
+}
+.eligibility-type{
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #007bff;
+  margin-left: -16px;
+  margin-top: -16px;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  padding: 6px;
+  width: 300px;
+  p {
+    margin-top: -25px;
+    padding-left: 40px;
+    font-weight: bold;
+  }
+}
+.eligibility-type-info {
+  ul {
+    margin-top: 10px;
+    font-style: italic;
+    li {
+      padding-top: 5px;
+    }
+  }
+}
+.eligibility-triangle {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 50px 0 0;
+  margin-left: -4px;
+  margin-top: -17px;
+  border-color: #007bff transparent transparent transparent;
+}
+

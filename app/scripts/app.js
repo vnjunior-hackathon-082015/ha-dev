@@ -35,18 +35,25 @@ angular
         views: {
           'bubble@home':{
               templateUrl: 'views/bubble.html',
-              controller: 'BubbleController',
+              controller: 'BubbleController'
           },
           'info@home':{
               template: '<div ui-view></div>',
-              controller: '',
+              controller: ''
           }
         }
       }).state('home.intro.why',{
         url: '/why',
         templateUrl: 'views/why.html',
-        controller: '',
-      }).state('dashboard',{
+        controller: ''
+      })
+      .state('home.intro.eligibility',{
+        url: '/eligibility',
+        templateUrl: 'views/eligibility.html',
+        controller: 'EligibilityController',
+        controllerAs: 'vm'
+      })
+      .state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
