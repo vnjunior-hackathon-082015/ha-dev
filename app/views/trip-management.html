@@ -42,19 +42,35 @@
             <p><b>Description:</b> {{des.description}}</p>
             <div>
               <p><b>Offers available:</b></p>
-              <div class="offer" >
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Food & Dining'}).length > 0 ">
                 <div class="offer-type offer-type-food"></div>
                 <div class="offer-name">
-                  <span>
-                    <b>15% Discount for Brunch</b>(Till 31 August 2015)
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Food & Dining'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
                   </span>
                 </div>
               </div>
-              <div class="offer">
-                <div class="offer-type offer-type-shopping" ></div>
-                <div class="offer-name" >
-                  <span>
-                    <b>20% Discount on Night Stay</b>(Till 31 September 2015)
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Shopping'}).length > 0 ">
+                <div class="offer-type offer-type-shopping"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Shopping'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Travel'}).length > 0">
+                <div class="offer-type offer-type-travel"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Travel'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Leisure'}).length > 0">
+                <div class="offer-type offer-type-leisure"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Leisure'} ">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
                   </span>
                 </div>
               </div>
@@ -141,6 +157,41 @@
           <div class="more-info" >
             <p><b>Address:</b> {{des.address}}</p>
             <p><b>Description:</b> {{des.description}}</p>
+            <div>
+              <p><b>Offers available:</b></p>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Food & Dining'}).length > 0 ">
+                <div class="offer-type offer-type-food"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Food & Dining'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Shopping'}).length > 0 ">
+                <div class="offer-type offer-type-shopping"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Shopping'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Travel'}).length > 0">
+                <div class="offer-type offer-type-travel"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Travel'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+              <div class="offer" ng-if="(des.offers | filter:{'Category':'Leisure'}).length > 0">
+                <div class="offer-type offer-type-leisure"></div>
+                <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Leisure'} ">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

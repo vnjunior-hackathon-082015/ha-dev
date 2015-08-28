@@ -9,11 +9,10 @@
     .module('hackathonApp')
     .controller('TripController', TripController);
 
-  TripController.$inject = ['emiratesAPIs', 'commonShareService', '$scope', '$mdDialog', '$rootScope'];
+  TripController.$inject = ['emiratesAPIs', 'commonShareService', '$scope', '$mdDialog', '$rootScope', '$q', '$filter'];
 
-  function TripController(emiratesAPIs, commonShareService, $scope, $mdDialog, $rootScope){
-    var vm = this,
-      destinationList = [];
+  function TripController(emiratesAPIs, commonShareService, $scope, $mdDialog, $rootScope, $q, $filter){
+    var vm = this, destinationList = [], locationOffers = [];
     vm.createTrip = createTrip;
     vm.onCommentButton = onCommentButton;
 
@@ -28,7 +27,22 @@
 
       destinationList = commonShareService.getDestination();
 
-      initTripsProperty();
+      var promises = [];
+      for(var i = 0; i < destinationList.length; i++){
+        var promise = emiratesAPIs.getCardOfferByArea(destinationList[i].latt, destinationList[i].longtt, 100);
+        promises.push(promise);
+      }
+
+      var allPromise = $q.all(promises);
+      allPromise.then(function(responses) {
+        for(var i = 0; i < destinationList.length; i++){
+          angular.forEach(responses[i].data['Offer'], function(offer){
+            offer.location = destinationList[i].id;
+            locationOffers.push(offer);
+          });
+        }
+        initTripsProperty();
+      });
     }
 
     function getTripsData(){
@@ -60,7 +74,12 @@
               vm.tripsCreated[k].destinations[i].address = destinationList[j].address;
               vm.tripsCreated[k].destinations[i].description = destinationList[j].description;
               vm.tripsCreated[k].destinations[i].locationName = destinationList[j].destination;
-              break;
+              vm.tripsCreated[k].destinations[i].offers = [];
+              angular.forEach(locationOffers, function(offer){
+                if (offer.location ==  destinationList[j].id){
+                  vm.tripsCreated[k].destinations[i].offers.push(offer);
+                }
+              });
             }
           }
         }
@@ -74,6 +93,12 @@
               vm.tripsJoined[k].destinations[i].address = destinationList[j].address;
               vm.tripsJoined[k].destinations[i].description = destinationList[j].description;
               vm.tripsJoined[k].destinations[i].locationName = destinationList[j].destination;
+              vm.tripsCreated[k].destinations[i].offers = [];
+              angular.forEach(locationOffers, function(offer){
+                if (offer.location ==  destinationList[j].id){
+                  vm.tripsCreated[k].destinations[i].offers.push(offer);
+                }
+              });
               break;
             }
           }
