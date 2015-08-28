@@ -32,13 +32,13 @@
   padding: 5px;
   font-size: 15px;
 }
-.route-info-divider{
+.trip-info-divider{
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.routes{
+.trips{
 
-  .route-detail{
+  .trip-detail{
     margin-left: 135px;
     border-left: 2px solid blue;
     &:last-child{
@@ -55,14 +55,14 @@
       vertical-align: top;
       padding-top: 31px;
     }
-    .route{
+    .trip{
       display: inline-block;
       vertical-align: baseline;
       width: 100px;
       height: 100px;
       padding-left: 3px;
       margin-left: 5px;
-      .route-img{
+      .trip-img{
         width: 90px;
         height: 90px;
         background-size: cover;
@@ -70,10 +70,10 @@
         border: 2px solid #3f51b5;
       }
     }
-    .route-time{
+    .trip-time{
       display: inline-block;
     }
-    .route-name{
+    .trip-name{
       color: rgb(63, 81, 181);
       font-size: 20px;
       margin-left: 10px;
@@ -127,10 +127,16 @@
 }
 
 
-md-dialog.create-route-popup{
+md-dialog.create-trip-popup{
   width: 100%;
   max-width: 90%;
   md-content.select-destination-row{
     overflow: visible;
+  }
+}
+
+.vAccordion--default {
+  v-pane-header::after, v-pane-header::before {
+    content: none;
   }
 }

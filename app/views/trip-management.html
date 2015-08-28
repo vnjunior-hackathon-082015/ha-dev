@@ -1,18 +1,18 @@
 <md-card>
   <md-button class="md-primary md-raised" ng-click="vm.createTrip($event)" flex flex-md="100">
-    Create your route
+    Create your trip
   </md-button>
 </md-card>
 <md-card class="trip-type">
   Trips Created
 </md-card>
-<md-card ng-repeat="route in vm.routesCreated">
+<md-card ng-repeat="trip in vm.tripsCreated">
   <div class="card-header">
     <div class="pickgradient">
-      <img ng-src="{{route.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 300px">
+      <img ng-src="{{trip.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 300px">
     </div>
-    <h1 class="md-image-title">{{route.title}}</h1>
-    <label class="md-image-label">HOSTED BY {{route.hostedBy}}</label>
+    <h1 class="md-image-title">{{trip.title}}</h1>
+    <label class="md-image-label">HOSTED BY {{trip.hostedBy}}</label>
   </div>
   <md-card-content>
     <div class="trip-info">
@@ -21,21 +21,21 @@
     </div>
     <div class="trip-info">
       <i class="material-icons">people</i>
-      <span>{{route.totalJoined}}/{{route.totalMember}} people joined</span>
+      <span>{{trip.totalJoined}}/{{trip.totalMember}} people joined</span>
     </div>
-    <md-divider class="route-info-divider"></md-divider>
+    <md-divider class="trip-info-divider"></md-divider>
     <p>
-      {{route.description}}
+      {{trip.description}}
     </p>
-    <md-divider class="route-info-divider"></md-divider>
-    <div class="routes" >
-      <div class="route-detail" ng-repeat="des in route.destinations">
+    <md-divider class="trip-info-divider"></md-divider>
+    <div class="trips" >
+      <div class="trip-detail" ng-repeat="des in trip.destinations">
         <div class="date-time">{{des.startDate}}</div>
-        <div class="route">
-          <div class="route-img" style="{{des.photo}}" ></div>
+        <div class="trip">
+          <div class="trip-img" style="{{des.photo}}" ></div>
         </div>
         <div class="destination-info"  style="width: 90%;">
-          <div class="route-name" >{{des.locationName}}</div>
+          <div class="trip" >{{des.locationName}}</div>
 
           <div class="more-info" >
             <p><b>Address:</b> {{des.address}}</p>
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <md-divider class="route-info-divider"></md-divider>
+    <md-divider class="trip-info-divider"></md-divider>
   </md-card-content>
   <div class="md-actions" layout="row" layout-align="end left">
 
@@ -58,7 +58,7 @@
       </v-pane-header>
 
       <v-pane-content>
-        <md-list-item class="md-2-line comment-record" ng-repeat="comment in route.comments">
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in trip.comments">
           <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
           <div class="md-list-item-text">
             <h3><a href="#">{{comment.fullname}}</a></h3>
@@ -67,9 +67,9 @@
         </md-list-item>
         <md-input-container flex>
           <label>Write your comment</label>
-          <textarea ng-model="route.activeComment" columns="1" md-maxlength="150"></textarea>
+          <textarea ng-model="trip.activeComment" columns="1" md-maxlength="150"></textarea>
         </md-input-container>
-        <md-button class="md-fab md-primary pull-right" ng-click="vm.onCommentButton(route)" ng-disabled="!route.activeComment || route.activeComment.length == 0">
+        <md-button class="md-fab md-primary pull-right" ng-click="vm.onCommentButton(trip)" ng-disabled="!trip.activeComment || trip.activeComment.length == 0">
           <md-icon md-font-library="material-icons">done</md-icon>
           <md-tooltip>
             Post comment
@@ -78,7 +78,6 @@
       </v-pane-content>
     </v-pane>
   </v-accordion>
-  <v-accordion class="vAccordion--default" multiple>
 
 </md-card>
 
@@ -87,13 +86,13 @@
   Trips Joined
 </md-card>
 
-<md-card ng-repeat="route in vm.routesJoined">
+<md-card ng-repeat="trip in vm.tripsJoined">
   <div class="card-header">
     <div class="pickgradient">
-      <img ng-src="{{route.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 300px">
+      <img ng-src="{{trip.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 300px">
     </div>
-    <h1 class="md-image-title">{{route.title}}</h1>
-    <label class="md-image-label">HOSTED BY {{route.hostedBy}}</label>
+    <h1 class="md-image-title">{{trip.title}}</h1>
+    <label class="md-image-label">HOSTED BY {{trip.hostedBy}}</label>
   </div>
   <md-card-content>
     <div class="trip-info">
@@ -102,21 +101,21 @@
     </div>
     <div class="trip-info">
       <i class="material-icons">people</i>
-      <span>{{route.totalJoined}}/{{route.totalMember}} people joined</span>
+      <span>{{trip.totalJoined}}/{{trip.totalMember}} people joined</span>
     </div>
-    <md-divider class="route-info-divider"></md-divider>
+    <md-divider class="trip-info-divider"></md-divider>
     <p>
-      {{route.description}}
+      {{trip.description}}
     </p>
-    <md-divider class="route-info-divider"></md-divider>
-    <div class="routes" >
-      <div class="route-detail" ng-repeat="des in route.destinations">
+    <md-divider class="trip-info-divider"></md-divider>
+    <div class="trips" >
+      <div class="trip-detail" ng-repeat="des in trip.destinations">
         <div class="date-time">{{des.startDate}}</div>
-        <div class="route">
-          <div class="route-img" style="{{des.photo}}" ></div>
+        <div class="trip">
+          <div class="trip-img" style="{{des.photo}}" ></div>
         </div>
         <div class="destination-info"  style="width: 90%;">
-          <div class="route-name" >{{des.locationName}}</div>
+          <div class="trip-name" >{{des.locationName}}</div>
 
           <div class="more-info" >
             <p><b>Address:</b> {{des.address}}</p>
@@ -126,7 +125,7 @@
       </div>
     </div>
 
-    <md-divider class="route-info-divider"></md-divider>
+    <md-divider class="trip-info-divider"></md-divider>
   </md-card-content>
   <div class="md-actions" layout="row" layout-align="end left">
 
@@ -141,7 +140,7 @@
       </v-pane-header>
 
       <v-pane-content>
-        <md-list-item class="md-2-line comment-record" ng-repeat="comment in route.comments">
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in trip.comments">
           <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
           <div class="md-list-item-text">
             <h3><a href="#">{{comment.fullname}}</a></h3>
@@ -150,9 +149,9 @@
         </md-list-item>
         <md-input-container flex>
           <label>Write your comment</label>
-          <textarea ng-model="route.activeComment" columns="1" md-maxlength="150"></textarea>
+          <textarea ng-model="trip.activeComment" columns="1" md-maxlength="150"></textarea>
         </md-input-container>
-        <md-button class="md-fab md-primary pull-right" ng-click="vm.onCommentButton(route)" ng-disabled="!route.activeComment || route.activeComment.length == 0">
+        <md-button class="md-fab md-primary pull-right" ng-click="vm.onCommentButton(trip)" ng-disabled="!trip.activeComment || trip.activeComment.length == 0">
           <md-icon md-font-library="material-icons">done</md-icon>
           <md-tooltip>
             Post comment
@@ -161,6 +160,5 @@
       </v-pane-content>
     </v-pane>
   </v-accordion>
-  <v-accordion class="vAccordion--default" multiple>
 
 </md-card>

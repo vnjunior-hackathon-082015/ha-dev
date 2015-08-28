@@ -36,8 +36,8 @@ angular
         controller: 'DashboardCtrl',
         controllerAs: 'vm'
       })
-      .state('route',{
-        url: '/route',
+      .state('trip',{
+        url: '/trip',
         templateUrl: 'views/trip-management.html',
         controller: 'TripController',
         controllerAs: 'vm'

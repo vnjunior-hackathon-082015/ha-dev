@@ -1,6 +1,6 @@
-var data_routes = [
+var data_trips = [
     {
-        "routeId": 1,
+        "tripId": 1,
         "avatarURL": "images/avatar/hien_pham.jpg",
         "title": "Dubai Mall Tour",
         "description": "laboris esse culpa non voluptate occaecat pariatur irure",
@@ -60,7 +60,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 2,
+        "tripId": 2,
         "avatarURL": "images/avatar/hung_thai.jpg",
         "title": "Burj Al Arab Tour",
         "description": "enim elit nisi duis pariatur nostrud dolore fugiat",
@@ -130,7 +130,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 3,
+        "tripId": 3,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Another Dubai Mall Tour",
         "description": "ut magna ea ea labore eiusmod consequat excepteur",
@@ -195,7 +195,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 4,
+        "tripId": 4,
         "avatarURL": "images/avatar/hung_thai.jpg",
         "title": "Dubai Marina Tour",
         "description": "ipsum ex sunt proident tempor sint deserunt elit",
@@ -255,7 +255,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 5,
+        "tripId": 5,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Miracle Garden Tour",
         "description": "fugiat ex quis proident nostrud nulla mollit eu",
@@ -310,7 +310,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 6,
+        "tripId": 6,
         "avatarURL": "images/avatar/anh_diep.jpg",
         "title": "Ski Dubai Tour",
         "description": "esse nulla labore ex ex anim occaecat amet",
@@ -380,7 +380,7 @@ var data_routes = [
         ]
     },
     {
-        "routeId": 7,
+        "tripId": 7,
         "avatarURL": "images/avatar/hien_pham.jpg",
         "title": "Dubai Museum Tour",
         "description": "nostrud elit sint tempor velit occaecat cupidatat adipisicing",
@@ -452,6 +452,6 @@ var data_routes = [
 ]
 ;
 
-var strData_Routes = JSON.stringify(data_routes);
-sessionStorage.routes = strData_Routes;
+var strData_Trips = JSON.stringify(data_trips);
+sessionStorage.trips = strData_Trips;
 
