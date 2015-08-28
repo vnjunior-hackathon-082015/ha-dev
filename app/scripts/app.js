@@ -45,6 +45,12 @@ angular
       }).state('home.intro.why',{
         url: '/why',
         templateUrl: 'views/why.html',
+        controller: 'WhyController',
+      }).state('home.intro.tours',{
+        url: '/tours',
+        templateUrl: 'views/tours.html',
+        controller: '',
+      }).state('dashboard',{
         controller: ''
       })
       .state('home.intro.eligibility',{
