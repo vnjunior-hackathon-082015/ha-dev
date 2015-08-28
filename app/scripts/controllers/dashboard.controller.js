@@ -18,7 +18,7 @@
           vm.message = 'Hellow Dashboard';
           vm.onCommentButton = onCommentButton;
           vm.onJoinTrip = onJoinTrip;
-          $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+          $scope.maps = [];
           activate();
 
           //==================== Function declaration ====================
@@ -28,6 +28,9 @@
             vm.listTrips.reverse();
             vm.destinationList = commonShareService.getDestination();
             for(var k = 0; k < vm.listTrips.length; k++){
+
+              $scope.maps.push({ center: { latitude: 45, longitude: -73 }, zoom: 8 });
+
               for (var i = 0; i < vm.listTrips[k].destinations.length; i++) {
                 for (var j = 0; j < vm.destinationList.length; j++) {
                   if (vm.listTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
@@ -85,65 +88,66 @@
 
           /*google Map*/
 
-          uiGmapIsReady.promise(1).then(function(instances) {
+          uiGmapIsReady.promise().then(function(instances) {
             instances.forEach(function(inst) {
-              var map = inst.map;
-              var uuid = map.uiGmap_id;
-              var mapInstanceNumber = inst.instance; // Starts at 1.
+                var map1 = $scope.map.control.getGMap();    // get map object through $scope.map.control getGMap() function
+                var map2 = map_instances[0].map;      
+              // var map = inst.map;
+              // var uuid = map.uiGmap_id;
+              // var mapInstanceNumber = inst.instance; // Starts at 1.
 
-              var directionsService = new google.maps.DirectionsService;
-              // var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
-              var directionsDisplay = new google.maps.DirectionsRenderer();
+              // var directionsService = new google.maps.DirectionsService;
+              // // var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+              // var directionsDisplay = new google.maps.DirectionsRenderer();
 
-              var orig = new google.maps.LatLng(25.00727, 54.98734);
-              var dest = new google.maps.LatLng(25.26736, 55.29685);
+              // var orig = new google.maps.LatLng(25.00727, 54.98734);
+              // var dest = new google.maps.LatLng(25.26736, 55.29685);
 
-              directionsDisplay.setMap(map);
+              // directionsDisplay.setMap(map);
 
-              directionsService.route({
-              origin: orig,
-              destination: dest,
-              waypoints: [
-                {
-                  location:  new google.maps.LatLng(25.13934, 55.18922),
-                  stopover: true
-                },
-                {
-                  location:  new google.maps.LatLng(25.19063, 55.27386),
-                  stopover: true
-                },
-                {
-                  location:  new google.maps.LatLng(25.11809, 55.20035),
-                  stopover: true
-                }
-              ],
-              optimizeWaypoints: true,
-              travelMode: google.maps.TravelMode.DRIVING
-              }, function(response, status) {
-                if (status === google.maps.DirectionsStatus.OK) {
-                  directionsDisplay.setDirections(response);
-                  // var legs = response.routes[ 0 ].legs;
-                  // for (var i = 0; i < legs.length; i++) {
-                  //   var num = i+1
-                  //   makeMarker( legs[i].start_location, num.toString());
-                  // };
-                } else {
-                  window.alert('Directions request failed due to ' + status);
-                }
-              });
+              // directionsService.route({
+              // origin: orig,
+              // destination: dest,
+              // waypoints: [
+              //   {
+              //     location:  new google.maps.LatLng(25.13934, 55.18922),
+              //     stopover: true
+              //   },
+              //   {
+              //     location:  new google.maps.LatLng(25.19063, 55.27386),
+              //     stopover: true
+              //   },
+              //   {
+              //     location:  new google.maps.LatLng(25.11809, 55.20035),
+              //     stopover: true
+              //   }
+              // ],
+              // optimizeWaypoints: true,
+              // travelMode: google.maps.TravelMode.DRIVING
+              // }, function(response, status) {
+              //   if (status === google.maps.DirectionsStatus.OK) {
+              //     directionsDisplay.setDirections(response);
+              //     // var legs = response.routes[ 0 ].legs;
+              //     // for (var i = 0; i < legs.length; i++) {
+              //     //   var num = i+1
+              //     //   makeMarker( legs[i].start_location, num.toString());
+              //     // };
+              //   } else {
+              //     window.alert('Directions request failed due to ' + status);
+              //   }
+              // });
 
-              function makeMarker( position,title ) {
-               new google.maps.Marker({
-                position: position,
-                map: map,
-                label: title
-               });
-              }
+              // function makeMarker( position,title ) {
+              //  new google.maps.Marker({
+              //   position: position,
+              //   map: map,
+              //   label: title
+              //  });
+              // }
             });
           });
 
           
-
           uiGmapGoogleMapApi.then(function(maps) {
           });
     }

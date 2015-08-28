@@ -1,5 +1,5 @@
-<ui-gmap-google-map center='map.center' zoom='map.zoom' id='myGGmap'></ui-gmap-google-map>
 <md-card class="trip-card" ng-repeat="trip in vm.listTrips">
+
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
     <p class="fullname">{{trip.hostedBy}}</p>
@@ -14,8 +14,10 @@
                   <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
                     {{isShowDetail?'Hide trip detail':'Show trip detail'}}
                   </md-button>
+                  <ui-gmap-google-map center='maps[$index].center' zoom='maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-header>
                 <v-pane-content>
+
                   <div class="trips" >
                     <div class="trip-detail" ng-repeat="des in trip.destinations">
                       <div class="date-time">{{des.startDate}}</div>
