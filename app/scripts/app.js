@@ -56,6 +56,10 @@ angular
         templateUrl: 'views/eligibility.html',
         controller: 'EligibilityController',
         controllerAs: 'vm'
+      }).state('home.intro.card',{
+        url: '/card',
+        templateUrl: 'views/card-offer.html',
+        controller: 'CardOfferController',
       })
       .state('dashboard',{
         url: '/dashboard',

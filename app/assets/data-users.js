@@ -62,6 +62,18 @@ var data_users = [
             3,
             4
         ]
+    },
+    {
+        "id": 6,
+        "firstName": "Arabian",
+        "lastName": "Adventures",
+        "username": "arabian_adventure",
+        "avatarURL": "images/avatar/arabian-adventures.jpg",
+        "pnr": "123456",
+        "tripsCreated": [
+            8
+        ],
+        "tripsJoined": []
     }
 ]
 ;

@@ -1,20 +1,22 @@
-<md-card class="trip-card" ng-repeat="trip in vm.listTrips">
+<md-card class="trip-card partner-trip" ng-repeat="trip in vm.partnerTrips">
 
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
+    <div class="emirates-partner">
+        <md-icon md-font-library="material-icons">star</md-icon>
+        Emirates partner
+    </div>
     <p class="fullname">{{trip.hostedBy}}</p>
     <p class="trip-title">{{trip.title}}</p>
     <div class="trip-description">
         <div class="description-content">
             <label ng-hide="isShowDetail">{{trip.description}}</label>
-
              <v-accordion class="vAccordion--default">
                 <v-pane>
                 <v-pane-header>
                   <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
                     {{isShowDetail?'Hide trip detail':'Show trip detail'}}
                   </md-button>
-                  <ui-gmap-google-map center='maps[$index].center' zoom='maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-header>
                 <v-pane-content>
 
@@ -33,8 +35,105 @@
                         </div>
                       </div>
                     </div>
+                    <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                   </div>
                 </v-pane-content>
+                </v-pane>
+              </v-accordion>
+
+        </div>
+    </div>
+    <div class="trip-info" layout="row">
+        <div flex="25">
+            <md-icon md-font-library="material-icons">attach_money</md-icon>
+            <label>{{trip.minimumCost}} {{trip.currency}}</label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">people</md-icon>
+            <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">schedule</md-icon>
+            <label>{{trip.fromDate}}</label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">schedule</md-icon>
+            <label>{{trip.toDate}}</label>
+        </div>
+    </div>
+    </md-card-content>
+    <md-card-footer class="comment-section" ng-show="trip.showCommentSection">
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in trip.comments">
+            <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
+            <div class="md-list-item-text">
+                <h3><a href="#">{{comment.fullname}}</a></h3>
+                <p>{{comment.comment}}</p>
+            </div>
+        </md-list-item>
+        <md-input-container flex>
+            <label>Write your comment</label>
+            <textarea ng-model="trip.activeComment" columns="1" md-maxlength="150"></textarea>
+        </md-input-container>
+    </md-card-footer>
+    <div class="md-actions" layout="row" layout-align="end center">
+
+        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onCommentButton($index)">
+            <md-icon md-font-library="material-icons">{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'done':'unfold_less'):'message'}}</md-icon>
+            <md-tooltip>
+              {{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}}
+            </md-tooltip>
+        </md-button>
+
+        <md-button class="md-fab md-primary" aria-label="Join button" ng-click="vm.onJoinTrip(trip)">
+            <md-icon md-font-library="material-icons">favorite</md-icon>
+            <md-tooltip>
+              Join this trip
+            </md-tooltip>
+        </md-button>
+    </div>
+</md-card>
+
+
+<md-card class="trip-card" ng-repeat="trip in vm.listTrips">
+
+    <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
+    <md-card-content>
+    <p class="fullname">{{trip.hostedBy}}</p>
+    <p class="trip-title">{{trip.title}}</p>
+    <div class="trip-description">
+        <div class="description-content">
+            <label ng-hide="isShowDetail">{{trip.description}}</label>
+
+             <v-accordion class="vAccordion--default">
+                <v-pane>
+                <v-pane-header>
+                  <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
+                    {{isShowDetail?'Hide trip detail':'Show trip detail'}}
+                  </md-button>
+
+                </v-pane-header>
+                <v-pane-content>
+
+                  <div class="trips" >
+                    <div class="trip-detail" ng-repeat="des in trip.destinations">
+                      <div class="date-time">{{des.startDate}}</div>
+                      <div class="trip">
+                        <div class="trip-img" style="{{des.photo}}" ></div>
+                      </div>
+                      <div class="destination-info"  style="width: 90%;">
+                        <div class="trip-name" >{{des.locationName}}</div>
+
+                        <div class="more-info" >
+                          <p><b>Address:</b> {{des.address}}</p>
+                          <p><b>Description:</b> {{des.description}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <ui-gmap-google-map center='vm.maps[vm.partnerTrips.length + $index].center' zoom='vm.maps[vm.partnerTrips.length + $index].zoom'></ui-gmap-google-map>
+                  </div>
+
+                </v-pane-content>
+
                 </v-pane>
               </v-accordion>
 

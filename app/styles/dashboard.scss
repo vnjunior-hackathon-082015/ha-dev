@@ -8,6 +8,15 @@
     border-width: 35px;
     background: none;
 
+    &.partner-trip{
+      -moz-border-image: url("../images/border5.png") 35 round round;
+      -webkit-border-image: url("../images/border5.png") 35 round round;
+      border-image: url("../images/border5.png") 35 round round;
+      .fullname{
+        color: red;
+      }
+    }
+
     md-card-content, md-card-footer, div.md-actions{
         background-color: #ECEABB;
     }
@@ -20,9 +29,31 @@
         left: -15px;
         border-radius: 50%;
         border: gray 2px double;
+        z-index: 1;
     }
     md-card-content{
         padding-left: 30px;
+        position: relative;
+
+        .emirates-partner{
+          font-weight: bold;
+          font-size: 15px;
+          top: 5px;
+          right: 15px;
+          color: red;
+          position: absolute;
+
+          md-icon{
+            color: yellow;
+            border-radius: 50%;
+            background-color: red;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding-top: 3px;
+          }
+        }
+
         .fullname{
             margin-left: 70px;
             border-bottom: 1px solid #DADADA;
@@ -37,6 +68,7 @@
             margin-left: -15px;
             border-radius: 30px;
             padding: 0px;
+            margin-top: 25px;
             .description-content{
                 /*copy from manage route*/
                 .trips{
