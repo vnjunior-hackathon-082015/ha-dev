@@ -7,7 +7,7 @@ body .header{
 }
 .main-content{
     background: url("../images/background/sky1.jpg") no-repeat;
-    background-size: cover;
+    background-size: contain;
     min-height: calc(100% - 52px)
 }
 
