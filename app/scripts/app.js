@@ -20,7 +20,8 @@ angular
     'ui.router',
     'ui.bootstrap',
     'vAccordion',
-    'ui.bootstrap.datetimepicker'
+    'ui.bootstrap.datetimepicker',
+    'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider, $urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -66,5 +67,12 @@ angular
     $mdIconProvider
        .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
        .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyAEwUlCClGHBkr-HXghLhJ_IdXf_Q-7O2c',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+    });
   })
 ;
