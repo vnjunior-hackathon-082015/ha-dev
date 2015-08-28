@@ -3,13 +3,13 @@
     Create your route
   </md-button>
 </md-card>
-<md-card>
+<md-card class="trip-type">
   Trips Created
 </md-card>
 <md-card ng-repeat="route in vm.routesCreated">
   <div class="card-header">
     <div class="pickgradient">
-      <img ng-src="{{route.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 250px">
+      <img ng-src="{{route.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 300px">
     </div>
     <h1 class="md-image-title">{{route.title}}</h1>
     <label class="md-image-label">HOSTED BY {{route.hostedBy}}</label>
@@ -83,7 +83,7 @@
 </md-card>
 
 
-<md-card>
+<md-card class="trip-type">
   Trips Joined
 </md-card>
 
