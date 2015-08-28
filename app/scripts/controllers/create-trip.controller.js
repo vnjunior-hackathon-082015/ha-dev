@@ -56,7 +56,33 @@
       $scope.$watch("date", function(value) {
         console.log('New date value:' + value);
       }, true);
+      
 
+      //========== Function declaration ====================
+      function activate(){
+        _allDestinationsList = getDestinationsList();
+        vm.allDestinations = _allDestinationsList;
+        // vm.destinations = [vm.allDestinations[0]];
+      };
+
+      /**
+       * Search for contacts.
+       */
+      function queryDestination (query) {
+        var results = query ?
+            vm.allDestinations.filter(createFilterFor(query)) : [];
+        return results;
+      }
+
+      /**
+       * Create filter function for a query string
+       */
+      function createFilterFor(query) {
+        var lowercaseQuery = angular.lowercase(query);
+        return function filterFn(contact) {
+          return (contact._lowername.indexOf(lowercaseQuery) != -1);;
+        };
+      }
 
 
       
