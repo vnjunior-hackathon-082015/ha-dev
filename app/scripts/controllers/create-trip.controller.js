@@ -8,11 +8,12 @@
         .module('hackathonApp')
         .controller('CreateTripController', CreateTripController);
 
-    CreateTripController.$inject = ["commonShareService", "$scope", "$mdDialog", "$timeout", "$q", "$log"];
+    CreateTripController.$inject = ["emiratesAPIs" ,"commonShareService", "$scope", "$mdDialog", "$timeout", "$q", "$log"];
 
-    function CreateTripController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
+    function CreateTripController(emiratesAPIs ,commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
       var vm = this,
-        _allDestinationsList;
+        _allDestinationsList,
+        _allHotelsList;
       vm.tripModel = {
         title: null,
         description: null,
@@ -22,11 +23,14 @@
         currency: null,
         totalJoined: 0,
         totalMember: 0,
+        hotel:null,
         destinations: []
       };
       vm.answer = answer;
       vm.cancel = cancel;
+      vm.queryHotel = queryHotel;
       vm.queryDestination = queryDestination;
+      vm.simulateHotelQuery = false;
       vm.filterSelected = true;
       vm.selectedDestinations = [{
         "destinations": []
@@ -62,8 +66,9 @@
       //========== Function declaration ====================
       function activate(){
         _allDestinationsList = getDestinationsList();
+        _allHotelsList = getHotelsList();
         vm.allDestinations = _allDestinationsList;
-        // vm.destinations = [vm.allDestinations[0]];
+        vm.allHotels = _allHotelsList;
       };
 
       /**
@@ -74,6 +79,11 @@
             vm.allDestinations.filter(createFilterFor(query)) : [];
         return results;
       }
+
+      function queryHotel (query) {
+        var results = query ? vm.allHotels.filter( createFilterFor(query) ) : vm.allHotels;
+          return results;
+      };
 
       /**
        * Create filter function for a query string
@@ -99,6 +109,36 @@
          });
       };
 
+      function getHotelsList(){
+        return emiratesAPIs.getHotelPropertyListing("Dubai").then(function(response){
+            var result = response.data.PropertyName.map(function(item){
+              if(item === "JW Marriot Marque"){
+                var hotel = {
+                  'destination': item,
+                  'address': 'Sheikh Zayed Road, Business Bay  Dubai  121000  United Arab Emirates ',
+                  'description': "Discover unmatched luxury at the new JW Marriott Marquis Hotel Dubai, a spectacular 5-star resort located in the Dubai's Business Bay district",
+                  'longtt': 55.2577,
+                  'latt': 25.185622,
+                  'photo': 'JWMarriotHotel.jpg'
+                };  
+              }else{
+                var hotel = {
+                  'destination': 'Premier Inn',
+                  'address': 'Dubai International Airport Opposite Terminal 3,Al Garhoud, Dubai United Arab Emirates',
+                  'description': "This hotel is a 5-minute drive from Dubai International Airport and offers a free shuttle service to Mamzar Beach, Festival City shopping centre, and Dubai mall",
+                  'longtt': 55.358866,
+                  'latt': 25.242665,
+                  'photo': 'PremierInnHotel.jpg'
+                };  
+              }
+              
+              hotel._lowername = hotel.destination.toLowerCase();
+              return hotel;
+            });
+            vm.allHotels = result;
+        });
+      };
+
       function confirmTrip(){
         var currentUser = commonShareService.getLoginInfo();
         var trips = commonShareService.getTrips();
@@ -122,6 +162,7 @@
             "totalMember": vm.tripModel.totalMember,
             "fromDate": fromDate,
             "toDate": toDate,
+            "hotel":vm.tripModel.hotel,
             "destinations": [],
             "comments": []
         };

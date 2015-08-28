@@ -26,6 +26,21 @@
 			    <label>Number of people</label>
 			    <input  type="number" step="any" name="rate" ng-model="vm.tripModel.totalMember" min="0" max="50">
 			  </md-input-container>
+				
+			 <md-content>	
+			  <md-autocomplete
+		          md-selected-item="vm.tripModel.hotel"
+		          md-search-text-change="vm.searchTextChange(vm.hotelSearchText)"
+		          md-search-text="vm.hotelSearchText"
+		          md-selected-item-change="vm.selectedHotelChange(item)"
+		          md-items="item in vm.queryHotel(vm.hotelSearchText)"
+		          md-item-text="item.destination"
+		          md-min-length="0"
+		          placeholder="Select a hotel">
+		        <md-item-template>
+		          <span md-highlight-text="vm.hotelSearchText" md-highlight-flags="^i">{{item.destination}}</span>
+		        </md-item-template>
+		       </md-content>
 
 			  <!-- Add destination to trip -->
 			  <md-content class="md-padding select-destination-row autocomplete" layout="row" ng-repeat="selectedDestination in vm.selectedDestinations">
