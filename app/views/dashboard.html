@@ -6,12 +6,19 @@
     <div class="trip-description">
         <div class="description-content">
             <label ng-hide="isShowDetail">{{trip.description}}</label>
-            <div ng-show="isShowDetail">
-                <!-- <label ng-repeat="testIndex in [0,1,2,3,4,5,6,7,8,9,10]">
-                    {{testIndex}} - {{trip.description}}
-                </label> -->
-
-                <div class="routes" >
+            <!--<div ng-show="isShowDetail">-->
+                <!--&lt;!&ndash; <label ng-repeat="testIndex in [0,1,2,3,4,5,6,7,8,9,10]">-->
+                    <!--{{testIndex}} - {{trip.description}}-->
+                <!--</label> &ndash;&gt;-->
+              <v-accordion class="vAccordion--default">
+                <v-pane>
+                <v-pane-header>
+                  <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
+                    {{isShowDetail?'Hide trip detail':'Show trip detail'}}
+                  </md-button>
+                </v-pane-header>
+                <v-pane-content>
+                  <div class="routes" >
                     <div class="route-detail" ng-repeat="des in trip.destinations">
                       <div class="date-time">{{des.startDate}}</div>
                       <div class="route">
@@ -26,13 +33,14 @@
                         </div>
                       </div>
                     </div>
-                </div>
-
-
-            </div>
-            <md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">
-                {{isShowDetail?'Hide Detail':'Show Detail'}}
-            </md-button>
+                  </div>
+                </v-pane-content>
+                </v-pane>
+              </v-accordion>
+            <!--</div>-->
+            <!--<md-button class="md-primary" ng-click="isShowDetail = !isShowDetail">-->
+                <!--{{isShowDetail?'Hide Detail':'Show Detail'}}-->
+            <!--</md-button>-->
 
         </div>
     </div>

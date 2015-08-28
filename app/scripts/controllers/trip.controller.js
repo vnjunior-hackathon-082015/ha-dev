@@ -14,66 +14,65 @@
   function TripController(commonShareService, $scope, $mdDialog, $rootScope){
     var vm = this,
       destinationList = [];
-    vm.routesCreated = [];
-    vm.routesJoined = [];
-    vm.createRoute = createRoute;
+    vm.tripsCreated = [];
+    vm.tripsJoined = [];
+    vm.createTrip = createTrip;
     vm.onCommentButton = onCommentButton;
 
     activate();
 
     //==================== Function declaration ====================
     function activate(){
-      $rootScope.activeTab = 'route';
+      $rootScope.activeTab = 'trip';
 
-      getRoutesData();
+      getTripsData();
 
       destinationList = commonShareService.getDestination();
 
-      initRoutesProperty();
+      initTripsProperty();
     }
 
-    function getRoutesData(){
+    function getTripsData(){
       vm.currentUserInfo = commonShareService.getLoginInfo();
-      vm.routesData = commonShareService.getRoutes();
-      vm.routesData.reverse();
-      vm.routesData.forEach(function(route){
-        vm.currentUserInfo.routesCreated.forEach(function(routeId){
-          if(route.routeId == routeId){
-            vm.routesCreated.push(route);
+      vm.tripsData = commonShareService.getTrips();
+      vm.tripsData.reverse();
+      vm.tripsData.forEach(function(trip){
+        vm.currentUserInfo.tripsCreated.forEach(function(tripId){
+          if(trip.tripId == tripId){
+            vm.tripsCreated.push(trip);
           }
         });
-        vm.currentUserInfo.routesJoined.forEach(function(routeId){
-          if(route.routeId == routeId){
-            vm.routesJoined.push(route);
+        vm.currentUserInfo.tripsJoined.forEach(function(tripId){
+          if(trip.tripId == tripId){
+            vm.tripsJoined.push(trip);
           }
         });
       });
-      // vm.selectedRoutes = angular.copy(vm.routesData);
     }
 
-    function initRoutesProperty(){
-      for(var k = 0; k < vm.routesCreated.length; k++){
-        for (var i = 0; i < vm.routesCreated[k].destinations.length; i++) {
+    function initTripsProperty(){
+      for(var k = 0; k < vm.tripsCreated.length; k++){
+        for (var i = 0; i < vm.tripsCreated[k].destinations.length; i++) {
           for (var j = 0; j < destinationList.length; j++) {
-            if (vm.routesCreated[k].destinations[i].locationId == destinationList[j].id) {
-              vm.routesCreated[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
-              vm.routesCreated[k].destinations[i].address = destinationList[j].address;
-              vm.routesCreated[k].destinations[i].description = destinationList[j].description;
-              vm.routesCreated[k].destinations[i].locationName = destinationList[j].destination;
+            if (vm.tripsCreated[k].destinations[i].locationId == destinationList[j].id) {
+              vm.tripsCreated[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+              vm.tripsCreated[k].destinations[i].address = destinationList[j].address;
+              vm.tripsCreated[k].destinations[i].description = destinationList[j].description;
+              vm.tripsCreated[k].destinations[i].locationName = destinationList[j].destination;
               break;
             }
           }
         }
       }
 
-      for(var k = 0; k < vm.routesJoined.length; k++){
-        for (var i = 0; i < vm.routesJoined[k].destinations.length; i++) {
+      for(var k = 0; k < vm.tripsJoined.length; k++){
+        for (var i = 0; i < vm.tripsJoined[k].destinations.length; i++) {
           for (var j = 0; j < destinationList.length; j++) {
-            if (vm.routesJoined[k].destinations[i].locationId == destinationList[j].id) {
-              vm.routesJoined[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
-              vm.routesJoined[k].destinations[i].address = destinationList[j].address;
-              vm.routesJoined[k].destinations[i].description = destinationList[j].description;
-              vm.routesJoined[k].destinations[i].locationName = destinationList[j].destination;
+            if (vm.tripsJoined[k].destinations[i].locationId == destinationList[j].id) {
+              vm.tripsJoined[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+              vm.tripsJoined[k].destinations[i].address = destinationList[j].address;
+              vm.tripsJoined[k].destinations[i].description = destinationList[j].description;
+              vm.tripsJoined[k].destinations[i].locationName = destinationList[j].destination;
               break;
             }
           }
@@ -81,26 +80,25 @@
       }
     }
 
-    function createRoute(event){
+    function createTrip(event){
       $mdDialog.show({
-        controller: "CreateRouteController",
+        controller: "CreateTripController",
         controllerAs: "vm",
-        templateUrl: 'views/create-route.html',
+        templateUrl: 'views/create-trip.html',
         parent: angular.element(document.body),
         targetEvent: event,
         clickOutsideToClose:false
       })
         .then(function(answer) {
-          //Reload routes
-          getRoutesData();
-          initRoutesProperty();
+          //Reload trips
+          getTripsData();
+          initTripsProperty();
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
     };
 
     function onCommentButton(currentTrip){
-      // var currentTrip = vm.selectedRoutes[index];
       if(currentTrip.activeComment && currentTrip.activeComment.length > 0){
         $rootScope.loginInfo = commonShareService.getLoginInfo();
         currentTrip.comments.push({
