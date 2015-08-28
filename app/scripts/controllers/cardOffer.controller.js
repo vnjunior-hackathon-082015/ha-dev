@@ -10,32 +10,35 @@
  angular.module('hackathonApp')
  .controller('CardOfferController', function($scope, $rootScope, $compile, commonShareService, emiratesAPIs,$timeout){
  	
- 	// $scope.name = [];
- 	// $scope.details=[];
- 	// $scope.tours=[];
+ 	$scope.offers = [];
+ 	
+ 	emiratesAPIs.getCardOffersByCategory('leisure').then(function(response){
+ 		$scope.offers.push(response.data.Offer[0]);
+ 		$scope.offers.push(response.data.Offer[1]);
+ 	});
+ 	// hard edit for good json
+ 	emiratesAPIs.getCardOffersByCategory('food').then(function(response){
+ 		response.data.Offer[0].Category="Food & Dining";
+ 		response.data.Offer[1].Category="Food & Dining";
+ 		$scope.offers.push(response.data.Offer[0]);
+ 		$scope.offers.push(response.data.Offer[1]);
+ 		
+ 	});
 
- 	// emiratesAPIs.getArabianAdventureTours("Dubai").then(function(respone){
- 	// 	angular.forEach(respone.data.TourName, function(name, key){
- 	// 		var i = 0;
- 	// 		$scope.name.push(name);
+ 	emiratesAPIs.getCardOffersByCategory('shopping').then(function(response){
+ 		response.data.Offer[0].Category="Shopping";
+ 		response.data.Offer[1].Category="Shopping";
+ 		$scope.offers.push(response.data.Offer[0]);
+ 		$scope.offers.push(response.data.Offer[1]);
+ 		
+ 	});
 
- 	// 		angular.forEach($scope.name, function(name, key){
- 	// 			emiratesAPIs.getAdventureAvailability("29/12/2015", 3,name).then(function(respone2){
- 	// 				$scope.details.push(respone2.data);
- 	// 			});
- 	// 		})
+ 	emiratesAPIs.getCardOffersByCategory('travel').then(function(response){
+ 		response.data.Offer[0].Category="Travel";
+ 		response.data.Offer[1].Category="Travel";
+ 		$scope.offers.push(response.data.Offer[0]);
+ 		$scope.offers.push(response.data.Offer[1]);
+ 		
+ 	});
 
- 	// 	});
- 	// 	console.log('get name');
- 	// });
-
- 	// // $timeout(angular.forEach($scope.name, function(name, key){
-
- 	// 	emiratesAPIs.getAdventureAvailability("29/12/2015", 3,name).then(function(respone2){
- 	// 		$scope.details.push(respone2.data);
-
- 	// 	});
- 	// 	console.log('get details');
-
- 	// }),5000);
-});
+ });
