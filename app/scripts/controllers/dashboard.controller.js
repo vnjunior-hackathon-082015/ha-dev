@@ -277,6 +277,12 @@
             }
             loginInfo.tripsJoined.push(trip.tripId);
             commonShareService.setLoginInfo(loginInfo);
+            if(trip.tripType === 2){
+              emiratesAPIs.getServiceEligibility().then(function(response){
+              var point =parseInt(response.data.Benefit[0].CardValues[0].Value);
+              var setPoint = commonShareService.setSkywardsPoint(point);
+            });
+            }
             $mdDialog.show(
               $mdDialog.alert()
                 .parent(angular.element(document.body))
