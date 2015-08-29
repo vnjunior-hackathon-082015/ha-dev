@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/trip.css">
+    <link rel="stylesheet" href="styles/create-trip.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/login.css">
@@ -25,7 +26,7 @@
     <link rel="stylesheet" href="../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.css">
-
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-block-ui/dist/angular-block-ui.css"/>
   </head>
   <body ng-app="hackathonApp">
     <!--[if lt IE 7]>
@@ -55,7 +56,7 @@
                   ng-hide="loginInfo.username.length > 0">
                   <a ng-href="#/">Login</a>
               </li>
-              <li ng-class="{'active': activeTab == 'home'}"><a ui-sref="home.intro">Home</a></li>
+              <li ng-class="{'active': activeTab == 'home'}"><a ui-sref="home.intro.why">Home</a></li>
               <li ng-class="{'active': activeTab == 'dashboard'}"><a ng-href="#/dashboard">Dashboard</a></li>
               <li ng-class="{'active': activeTab == 'trip'}"
                   ng-show="loginInfo.username.length > 0">
@@ -125,6 +126,7 @@
 
     <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
     <script src="../bower_components/v-accordion/dist/v-accordion.js"></script>
+    <script src="bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

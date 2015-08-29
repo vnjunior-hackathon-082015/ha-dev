@@ -32,6 +32,41 @@
                         <div class="more-info" >
                           <p><b>Address:</b> {{des.address}}</p>
                           <p><b>Description:</b> {{des.description}}</p>
+                          <div>
+                            <p><b>Offers available:</b></p>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Food & Dining'}).length > 0 ">
+                              <div class="offer-type offer-type-food"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Food & Dining'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Shopping'}).length > 0 ">
+                              <div class="offer-type offer-type-shopping"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Shopping'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Travel'}).length > 0">
+                              <div class="offer-type offer-type-travel"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Travel'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Leisure'}).length > 0">
+                              <div class="offer-type offer-type-leisure"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Leisure'} ">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -77,14 +112,14 @@
     </md-card-footer>
     <div class="md-actions" layout="row" layout-align="end center">
 
-        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onCommentButton($index)">
+        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onPartnerTripCommentButton($index)">
             <md-icon md-font-library="material-icons">{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'done':'unfold_less'):'message'}}</md-icon>
             <md-tooltip>
               {{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}}
             </md-tooltip>
         </md-button>
 
-        <md-button class="md-fab md-primary" aria-label="Join button" ng-click="vm.onJoinTrip(trip)">
+        <md-button class="md-fab md-primary" aria-label="Join button" ng-disabled="vm.isDisableJoinButton(trip)" ng-disabled="vm.isDisableJoinButton(trip)" ng-click="vm.onJoinTrip(trip, $event)">
             <md-icon md-font-library="material-icons">favorite</md-icon>
             <md-tooltip>
               Join this trip
@@ -126,6 +161,41 @@
                         <div class="more-info" >
                           <p><b>Address:</b> {{des.address}}</p>
                           <p><b>Description:</b> {{des.description}}</p>
+                          <div>
+                            <p><b>Offers available:</b></p>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Food & Dining'}).length > 0 ">
+                              <div class="offer-type offer-type-food"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Food & Dining'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Shopping'}).length > 0 ">
+                              <div class="offer-type offer-type-shopping"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Shopping'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Travel'}).length > 0">
+                              <div class="offer-type offer-type-travel"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Travel'}">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                            <div class="offer" ng-if="(des.offers | filter:{'Category':'Leisure'}).length > 0">
+                              <div class="offer-type offer-type-leisure"></div>
+                              <div class="offer-name">
+                  <span ng-repeat="offer in des.offers | filter:{'Category':'Leisure'} ">
+                    <b>{{offer['OfferName']}}</b>({{offer['Expiry']}})
+                  </span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -173,14 +243,14 @@
     </md-card-footer>
     <div class="md-actions" layout="row" layout-align="end center">
 
-        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onCommentButton($index)">
+        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onTripCommentButton($index)">
             <md-icon md-font-library="material-icons">{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'done':'unfold_less'):'message'}}</md-icon>
             <md-tooltip>
               {{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}}
             </md-tooltip>
         </md-button>
 
-        <md-button class="md-fab md-primary" aria-label="Join button" ng-click="vm.onJoinTrip(trip)">
+        <md-button class="md-fab md-primary" aria-label="Join button" ng-disabled="vm.isDisableJoinButton(trip)" ng-click="vm.onJoinTrip(trip, $event)">
             <md-icon md-font-library="material-icons">favorite</md-icon>
             <md-tooltip>
               Join this trip
