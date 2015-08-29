@@ -115,13 +115,13 @@
                 }]
               }
             };
-          } else if (long == 55.2794 && lat == 25.19688){
+          } else if (long == 55.27945 && lat == 25.19688){
             // Dubai Mall
             return {
               data: {
                 "Offer" : [{
-                  "OfferName": "25% Discount for Brunch",
-                  "Category": "Food & Dining",
+                  "OfferName": "25% Discount on Footwear",
+                  "Category": "Shopping",
                   "ValidAt": "Dubai",
                   "Expiry": "12 November 2015",
                   "PlatinumExclusive": false
