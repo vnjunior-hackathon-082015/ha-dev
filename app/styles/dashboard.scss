@@ -7,15 +7,17 @@
 
     &.partner-trip{
       md-card-content, md-card-footer, div.md-actions{
-          background-color: #FFF59D;
+          background-color: #FFB03C;
       }
-      background-color: #FFF59D;
+      background-color: #FFB03C;
       .fullname{
         color: red;
       }
-
-      md-card-content, md-card-footer, div.md-actions{
-        background-color: #ECEA82;
+      .trip-title {
+        color: #686868;
+      }
+      .trip-description {
+        color: #686868;
       }
     }
 
