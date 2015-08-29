@@ -8,13 +8,14 @@
  * Controller of the hackathonApp
  */
 angular.module('hackathonApp')
-  .controller('LogoutCtrl', function($scope, $rootScope, $state,$timeout, commonShareService ){
+  .controller('LogoutCtrl', function($scope, $rootScope, $state,$timeout, commonShareService, blockUI){
     commonShareService.setLoginInfo(null);
     commonShareService.setTrips(null);
     $rootScope.loginInfo = null;
 
-
+    blockUI.start();
     $timeout(function(){
+        blockUI.stop();
         $state.go('dashboard');
     }, 1500);
   });

@@ -6,6 +6,7 @@ var data_arab_adventure_trips = [
         "title": "Sand Duning",
         "description": "The mysterious desert is the ideal venue for a magical and memorable evening. Leaving behind the hustle and bustle of the city, trained safari guides driving 4x4 vehicles lead the thrilling journey - over the sand dunes, and through the Dubai Desert Conservation Reserve - deep into the heart of the desert. A feast under the stars includes a Middle Eastern selection of grilled meats, fresh salads, delectable sweets and hand-picked beverages at our traditional Bedouin-style camp. ",
         "hostedBy": "Arabian Adventures",
+        "tripImage": "images/dubai-img/sand-dunning.jpg",
         "hostedById": 6,
         "createDate": "2015-01-25 11:35",
         "minimumCost": 600,

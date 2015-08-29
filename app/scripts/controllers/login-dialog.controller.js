@@ -11,7 +11,7 @@ angular.module('hackathonApp')
   .controller('LoginDialogController', LoginDialogController);
 
 
-   function LoginDialogController($scope, $timeout, $rootScope, $mdDialog, commonShareService) {
+   function LoginDialogController($scope, $timeout, $rootScope, $mdDialog, commonShareService, blockUI) {
       var vm = this;
       vm.login = login;
       vm.cancel = cancel;
@@ -36,9 +36,11 @@ angular.module('hackathonApp')
           }
         }
         if(vm.isLoggedIn){
+          blockUI.start();
           $timeout(function(){
+            blockUI.stop();
             $mdDialog.hide();
-          }, 2000);
+          }, 1500);
         } else {
           vm.message = 'You enter wrong username and PNR';
         }

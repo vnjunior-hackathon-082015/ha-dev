@@ -3,7 +3,7 @@
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
     <div class="emirates-partner">
-        <md-icon md-font-library="material-icons">thumb_up</md-icon>
+        <md-icon md-font-library="material-icons">check</md-icon>
         Emirates partner
     </div>
     <p class="fullname">{{trip.hostedBy}}</p>
@@ -70,7 +70,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                   </div>
                   <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-content>
