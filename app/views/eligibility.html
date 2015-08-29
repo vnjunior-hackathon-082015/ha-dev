@@ -1,41 +1,35 @@
 
 <div class="row" style="margin: 0px;">
-  <div style="margin-top: 50px;">
-    <div class="menu-home col-sm-2 col-md-2 col-lg-2">
-      <u>
-        <li>Book your stop over in dubai</li>
-        <li>Your information</li>
-      </u>
-    </div>
+  <div>
    <div class="col-sm-10  col-md-10">
      <md-card class="eligibility" ng-repeat="eligibility in vm.eligibilityData">
-       <md-card-content>
-         <div>
-           <div class="eligibility-type" >
-             <i class="material-icons" ng-if="eligibility.type == 'AirportHotels'">hotel</i>
-             <i class="material-icons" ng-if="eligibility.type == 'Parking'">local_parking</i>
-             <i class="material-icons"
-                ng-if="eligibility.type == 'PrayerRooms' ||
-                eligibility.type == 'AirportLounges' ||
-                eligibility.type == 'SleepingPods' ||
-                eligibility.type == 'SmokingAreas'">info</i>
-             <i class="material-icons" ng-if="eligibility.type == 'ToiletsAndShowers'">wc</i>
-             <i class="material-icons" ng-if="eligibility.type == 'TravellingWithBabiesAndChildren'">face</i>
-             <i class="material-icons" ng-if="eligibility.type == 'VIPTerminal'">work</i>
-             <p>{{eligibility.typeName}}</p>
-           </div>
-           <div class="eligibility-triangle" >
-           </div>
-         </div>
-         <div class="eligibility-type-info" >
-           <ul>
-             <li ng-repeat="info in eligibility.info">
-               {{info}}
-             </li>
-           </ul>
-         </div>
-       </md-card-content>
-     </md-card>
-   </div>
-  </div>
+     <md-card-content>
+     <div>
+       <div class="eligibility-type" >
+         <i class="material-icons" ng-if="eligibility.type == 'AirportHotels'">hotel</i>
+         <i class="material-icons" ng-if="eligibility.type == 'Parking'">local_parking</i>
+         <i class="material-icons"
+         ng-if="eligibility.type == 'PrayerRooms' ||
+         eligibility.type == 'AirportLounges' ||
+         eligibility.type == 'SleepingPods' ||
+         eligibility.type == 'SmokingAreas'">info</i>
+         <i class="material-icons" ng-if="eligibility.type == 'ToiletsAndShowers'">wc</i>
+         <i class="material-icons" ng-if="eligibility.type == 'TravellingWithBabiesAndChildren'">face</i>
+         <i class="material-icons" ng-if="eligibility.type == 'VIPTerminal'">work</i>
+         <p>{{eligibility.typeName}}</p>
+       </div>
+       <div class="eligibility-triangle" >
+       </div>
+     </div>
+     <div class="eligibility-type-info" >
+       <ul>
+         <li ng-repeat="info in eligibility.info">
+           {{info}}
+         </li>
+       </ul>
+     </div>
+   </md-card-content>
+ </md-card>
+</div>
+</div>
 </div>

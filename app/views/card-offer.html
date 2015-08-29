@@ -1,3 +1,51 @@
-<div>
-	card offer
+
+<div class="row" style="margin: 0px;">
+	<div class="offer-list offer-list col-md-10">
+		<div class="row">
+			<div class="row title-list-offer"> Leisure</div>
+			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Leisure'}">
+				<div class="des-offer">
+					<div class="offer-name">{{offer.OfferName}}</div>
+					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
+					<div ng-hide= "offer.PlatinumExclusive" class="platinum">All card are accepted</div>
+					<div class="exp-date">{{offer.Expiry}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+			<div class="row title-list-offer"> Travel</div>
+			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Travel'}">
+				<div class="des-offer">
+					<div class="offer-name">{{offer.OfferName}}</div>
+					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
+					<div ng-hide= "offer.PlatinumExclusive" class="platinum">All card are accepted</div>
+					<div class="exp-date">{{offer.Expiry}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+			<div class="row title-list-offer"> Shopping</div>
+			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Shopping'}">
+				<div class="des-offer">
+					<div class="offer-name">{{offer.OfferName}}</div>
+					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
+					<div ng-hide= "offer.PlatinumExclusive" class="platinum">All card are accepted</div>
+					<div class="exp-date">{{offer.Expiry}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+			<div class="row title-list-offer">Food & Dining</div>
+			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Food & Dining'}">
+				<div class="des-offer">
+					<div class="offer-name">{{offer.OfferName}}</div>
+					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
+					<div ng-hide= "offer.PlatinumExclusive" class="platinum">All card are accepted</div>
+					<div class="exp-date">{{offer.Expiry}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 </div>

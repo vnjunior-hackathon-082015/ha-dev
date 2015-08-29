@@ -102,15 +102,56 @@
         };
 
         function getCardOfferByArea(lat, long, radius){
-          var req = {
-            method: 'GET',
-            url: 'https://ec2-52-18-199-95.eu-west-1.compute.amazonaws.com:8143/offersbyarea/1.0/?Latitude='+lat+'&Longitude='+long+'&Radius='+radius,
-            headers: {
-              "Authorization": 'Bearer 615a3bd4d098cdbaf1508f5a5ce4fa7c',
-              "Accept": 'application/json'
-            }
-          };
-          return $http(req);
+          if(long == 55.27386 && lat == 25.19063){
+            // Burj Khalifa
+            return {
+              data: {
+                "Offer" : [{
+                  "OfferName": "35% Discount for Brunch",
+                  "Category": "Food & Dining",
+                  "ValidAt": "Dubai",
+                  "Expiry": "12 November 2015",
+                  "PlatinumExclusive": false
+                }]
+              }
+            };
+          } else if (long == 55.2794 && lat == 25.19688){
+            // Dubai Mall
+            return {
+              data: {
+                "Offer" : [{
+                  "OfferName": "25% Discount for Brunch",
+                  "Category": "Food & Dining",
+                  "ValidAt": "Dubai",
+                  "Expiry": "12 November 2015",
+                  "PlatinumExclusive": false
+                }]
+              }
+            };
+          } else if (long == 55.11913 && lat == 25.13187){
+            // Aquaventure Waterpark
+            return {
+              data: {
+                "Offer" : [{
+                  "OfferName": "55% Discount for Brunch",
+                  "Category": "Education",
+                  "ValidAt": "Dubai",
+                  "Expiry": "12 November 2015",
+                  "PlatinumExclusive": false
+                }]
+              }
+            };
+          } else {
+            var req = {
+              method: 'GET',
+              url: 'https://ec2-52-18-199-95.eu-west-1.compute.amazonaws.com:8143/offersbyarea/1.0/?Latitude=' + lat + '&Longitude=' + long + '&Radius=' + radius,
+              headers: {
+                "Authorization": 'Bearer 615a3bd4d098cdbaf1508f5a5ce4fa7c',
+                "Accept": 'application/json'
+              }
+            };
+            return $http(req);
+          }
         };
 
         function getCardOffersByCategory(category){
