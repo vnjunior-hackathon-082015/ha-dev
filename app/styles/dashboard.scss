@@ -42,7 +42,7 @@
         .emirates-partner{
           font-weight: bold;
           font-size: 15px;
-          top: -5px;
+          top: 5px;
           right: 15px;
           color: red;
           position: absolute;
@@ -51,10 +51,11 @@
             color: white;
             border-radius: 50%;
             background-color: gray;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             text-align: center;
-            padding-top: 8px;
+            padding-top: 7px;
+            font-size: 15px;
           }
         }
 

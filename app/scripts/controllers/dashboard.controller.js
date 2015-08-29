@@ -168,7 +168,6 @@
                   directionsDisplay.setMap(map);
                   blockUI.stop();
                   (function(myIndex) {
-                    blockUI.start();
                     directionsService.route({
                       origin: orig,
                       destination: dest,
@@ -176,7 +175,6 @@
                       optimizeWaypoints: true,
                       travelMode: google.maps.TravelMode.DRIVING
                     }, function(response, status) {
-                      blockUI.stop();
                       if (status === google.maps.DirectionsStatus.OK) {
                         directionsDisplays[myIndex].setDirections(response);
                         // var legs = response.routes[ 0 ].legs;
