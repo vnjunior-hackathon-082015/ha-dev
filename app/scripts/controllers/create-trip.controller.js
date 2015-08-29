@@ -124,7 +124,7 @@
                   'longtt': 55.2577,
                   'latt': 25.185622,
                   'photo': 'JWMarriotHotel.jpg'
-                };  
+                };
               }else{
                 var hotel = {
                   'destination': 'Premier Inn',
@@ -133,9 +133,9 @@
                   'longtt': 55.358866,
                   'latt': 25.242665,
                   'photo': 'PremierInnHotel.jpg'
-                };  
+                };
               }
-              
+
               hotel._lowername = hotel.destination.toLowerCase();
               return hotel;
             });
@@ -172,9 +172,19 @@
         };
 
         for(var i = 0; i < vm.selectedDestinations.length; i++){
+          var fromDate = vm.selectedDestinations[i].fromDate;
+          var toDate = vm.selectedDestinations[i].toDate;
+          var fromDateLocaleTimeString = fromDate.toLocaleTimeString();
+          var toDateLocaleTimeString = toDate.toLocaleTimeString();
+
+          var fromDateStr = fromDate.toLocaleDateString()
+              + " " + fromDateLocaleTimeString.substring(0, fromDateLocaleTimeString.length-6);
+          var toDateStr = toDate.toLocaleDateString()
+              + " " + toDateLocaleTimeString.substring(0, toDateLocaleTimeString.length-6);
+
           tripObj.destinations.push({
-            "startDate": vm.selectedDestinations[i].fromDate,
-            "endDate": vm.selectedDestinations[i].toDate,
+            "startDate": fromDateStr,
+            "endDate": toDateStr,
             "locationId": vm.selectedDestinations[i].destinations[0].item.id
           });
         }

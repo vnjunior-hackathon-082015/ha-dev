@@ -16,6 +16,6 @@ angular.module('hackathonApp')
     blockUI.start();
     $timeout(function(){
         blockUI.stop();
-        $state.go('dashboard');
+        $state.go('home.intro.why');
     }, 1500);
   });
