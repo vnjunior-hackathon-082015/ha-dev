@@ -6,9 +6,14 @@ body .header{
     }
 }
 .main-content{
-    background: url("../images/background/sky1.jpg") no-repeat;
-    background-size: cover;
-    min-height: calc(100% - 52px)
+  margin-top: 51px;
+}
+
+.main-content-has-background{
+  background: url("../images/background/wallhaven.jpg") no-repeat;
+  background-size: 180%;
+  min-height: calc(100% - 52px);
+  background-color: #EAE9E9;
 }
 
 

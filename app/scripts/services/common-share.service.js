@@ -25,7 +25,8 @@
             getDestination: getDestination,
             getUsers: getUsers,
             getPartnerTrips: getPartnerTrips,
-            setPartnerTrips: setPartnerTrips
+            setPartnerTrips: setPartnerTrips,
+            setSkywardsPoint: setSkywardsPoint
         };
 
         //==================== Function declaration ====================
@@ -96,6 +97,11 @@
             $window.sessionStorage.partnerTrips = str;
           }
         }
+
+        function setSkywardsPoint(point){
+          var loginInfor = getLoginInfo();
+          loginInfor.skywardsPoint = parseInt(loginInfor.skywardsPoint) + parseInt(point);
+        };
     }
 
 })();

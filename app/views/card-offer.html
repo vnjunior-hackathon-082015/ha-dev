@@ -3,7 +3,8 @@
 	<div class="offer-list offer-list col-md-10">
 		<div class="row">
 			<div class="row title-list-offer"> Leisure</div>
-			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Leisure'}">
+			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Leisure'}"
+			style="background: url('{{offer.photo}}');background-size: 100% 100%;">
 				<div class="des-offer">
 					<div class="offer-name">{{offer.OfferName}}</div>
 					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
@@ -14,7 +15,7 @@
 		</div>
 		<div class="row" >
 			<div class="row title-list-offer"> Travel</div>
-			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Travel'}">
+			<div class="item-offer" ng-repeat="offer in offers | filter:{Category: 'Travel'}" style="background: url('{{offer.photo}}');background-size: 100% 100%;">
 				<div class="des-offer">
 					<div class="offer-name">{{offer.OfferName}}</div>
 					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
@@ -25,7 +26,7 @@
 		</div>
 		<div class="row" >
 			<div class="row title-list-offer"> Shopping</div>
-			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Shopping'}">
+			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Shopping'}" style="background: url('{{offer.photo}}');background-size: 100% 100%;">
 				<div class="des-offer">
 					<div class="offer-name">{{offer.OfferName}}</div>
 					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
@@ -36,7 +37,7 @@
 		</div>
 		<div class="row" >
 			<div class="row title-list-offer">Food & Dining</div>
-			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Food & Dining'}">
+			<div class="item-offer"  ng-repeat="offer in offers | filter:{Category: 'Food & Dining'}" style="background: url('{{offer.photo}}');background-size: 100% 100%;">
 				<div class="des-offer">
 					<div class="offer-name">{{offer.OfferName}}</div>
 					<div ng-show= "offer.PlatinumExclusive" class="platinum">Only for Platinum</div>
