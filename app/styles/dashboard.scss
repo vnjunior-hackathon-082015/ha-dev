@@ -71,6 +71,10 @@
             margin-top: 25px;
             .description-content{
                 /*copy from manage route*/
+              label{
+                font-weight: normal;
+                font-style: italic;
+              }
                 .trips{
 
                   .trip-detail{
