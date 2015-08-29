@@ -3,7 +3,7 @@
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
     <div class="emirates-partner">
-        <md-icon md-font-library="material-icons">star</md-icon>
+        <md-icon md-font-library="material-icons">thumb_up</md-icon>
         Emirates partner
     </div>
     <p class="fullname">{{trip.hostedBy}}</p>
@@ -70,28 +70,29 @@
                         </div>
                       </div>
                     </div>
-                    <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
+                    
                   </div>
+                  <ui-gmap-google-map center='vm.maps[$index].center' zoom='vm.maps[$index].zoom'></ui-gmap-google-map>
                 </v-pane-content>
                 </v-pane>
               </v-accordion>
 
         </div>
     </div>
-    <div class="trip-info" layout="row">
-        <div flex="25">
+    <div class="trip-info" layout="row" layout-wrap>
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">attach_money</md-icon>
             <label>{{trip.minimumCost}} {{trip.currency}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">people</md-icon>
             <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.fromDate}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.toDate}}</label>
         </div>
@@ -112,14 +113,14 @@
     </md-card-footer>
     <div class="md-actions" layout="row" layout-align="end center">
 
-        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onCommentButton($index)">
+        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onPartnerTripCommentButton($index)">
             <md-icon md-font-library="material-icons">{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'done':'unfold_less'):'message'}}</md-icon>
             <md-tooltip>
               {{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}}
             </md-tooltip>
         </md-button>
 
-        <md-button class="md-fab md-primary" aria-label="Join button" ng-click="vm.onJoinTrip(trip)">
+        <md-button class="md-fab md-primary" aria-label="Join button" ng-disabled="vm.isDisableJoinButton(trip)" ng-disabled="vm.isDisableJoinButton(trip)" ng-click="vm.onJoinTrip(trip, $event)">
             <md-icon md-font-library="material-icons">favorite</md-icon>
             <md-tooltip>
               Join this trip
@@ -209,20 +210,20 @@
 
         </div>
     </div>
-    <div class="trip-info" layout="row">
-        <div flex="25">
+    <div class="trip-info" layout="row" layout-wrap>
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">attach_money</md-icon>
             <label>{{trip.minimumCost}} {{trip.currency}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">people</md-icon>
             <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.fromDate}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.toDate}}</label>
         </div>
@@ -243,14 +244,14 @@
     </md-card-footer>
     <div class="md-actions" layout="row" layout-align="end center">
 
-        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onCommentButton($index)">
+        <md-button class="md-fab md-primary" aria-label="{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}} button" ng-click="vm.onTripCommentButton($index)">
             <md-icon md-font-library="material-icons">{{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'done':'unfold_less'):'message'}}</md-icon>
             <md-tooltip>
               {{trip.showCommentSection?((trip.activeComment && trip.activeComment.length>0)?'Post comment':'Hide comment'):'Show comment'}}
             </md-tooltip>
         </md-button>
 
-        <md-button class="md-fab md-primary" aria-label="Join button" ng-click="vm.onJoinTrip(trip)">
+        <md-button class="md-fab md-primary" aria-label="Join button" ng-disabled="vm.isDisableJoinButton(trip)" ng-click="vm.onJoinTrip(trip, $event)">
             <md-icon md-font-library="material-icons">favorite</md-icon>
             <md-tooltip>
               Join this trip

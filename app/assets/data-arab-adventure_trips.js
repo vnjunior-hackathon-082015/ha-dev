@@ -4,8 +4,7 @@ var data_arab_adventure_trips = [
         "tripType": 2,
         "avatarURL": "images/avatar/arabian-adventures.jpg",
         "title": "Sand Duning",
-        "description": "This trip's created by Arabian Adventures",
-        "tripImage": "images/dubai-img/sand-dunning.jpg",
+        "description": "The mysterious desert is the ideal venue for a magical and memorable evening. Leaving behind the hustle and bustle of the city, trained safari guides driving 4x4 vehicles lead the thrilling journey - over the sand dunes, and through the Dubai Desert Conservation Reserve - deep into the heart of the desert. A feast under the stars includes a Middle Eastern selection of grilled meats, fresh salads, delectable sweets and hand-picked beverages at our traditional Bedouin-style camp. ",
         "hostedBy": "Arabian Adventures",
         "hostedById": 6,
         "createDate": "2015-01-25 11:35",
@@ -21,7 +20,7 @@ var data_arab_adventure_trips = [
             {
                 "startDate": "2015-01-25 15:00",
                 "endDate": "2015-01-26 11:00",
-                "locationId": 12
+                "locationId": 5
             },
             {
                 "startDate": "2015-01-25 15:00",
@@ -77,8 +76,8 @@ var data_arab_adventure_trips = [
         "tripType": 2,
         "avatarURL": "images/avatar/arabian-adventures.jpg",
         "title": "Morning Sand",
-        "description": "This trip's created by Arabian Adventures",
-        "tripImage": "images/dubai-img/morning-sand.jpg.jpg",
+        "description": "The mysterious desert is the ideal venue for a magical and memorable evening. Leaving behind the hustle and bustle of the city, trained safari guides driving 4x4 vehicles lead the thrilling journey - over the sand dunes, and through the Dubai Desert Conservation Reserve - deep into the heart of the desert. A feast under the stars includes a Middle Eastern selection of grilled meats, fresh salads, delectable sweets and hand-picked beverages at our traditional Bedouin-style camp. ",
+        "tripImage": "images/dubai-img/morning-sand.jpg",
         "hostedBy": "Arabian Adventures",
         "hostedById": 6,
         "createDate": "2015-01-25 11:35",
@@ -150,7 +149,7 @@ var data_arab_adventure_trips = [
         "tripType": 2,
         "avatarURL": "images/avatar/arabian-adventures.jpg",
         "title": "City Walk",
-        "description": "This trip's created by Arabian Adventures",
+        "description": "The mysterious desert is the ideal venue for a magical and memorable evening. Leaving behind the hustle and bustle of the city, trained safari guides driving 4x4 vehicles lead the thrilling journey - over the sand dunes, and through the Dubai Desert Conservation Reserve - deep into the heart of the desert. A feast under the stars includes a Middle Eastern selection of grilled meats, fresh salads, delectable sweets and hand-picked beverages at our traditional Bedouin-style camp. ",
         "tripImage": "images/dubai-img/city-walk.jpg",
         "hostedBy": "Arabian Adventures",
         "hostedById": 6,
@@ -165,29 +164,24 @@ var data_arab_adventure_trips = [
         "toDate": "20:00 13/09/2015",
         "destinations": [
             {
-                "startDate": "2015-01-25 15:00",
+                "startDate": "2015-01-25 8:00",
                 "endDate": "2015-01-26 11:00",
                 "locationId": 12
             },
             {
-                "startDate": "2015-01-25 15:00",
+                "startDate": "2015-01-25 9:30",
                 "endDate": "2015-01-26 11:00",
-                "locationId": 6
+                "locationId": 7
+            },
+            {
+                "startDate": "2015-01-25 11:00",
+                "endDate": "2015-01-26 11:00",
+                "locationId": 3
             },
             {
                 "startDate": "2015-01-25 15:00",
                 "endDate": "2015-01-26 11:00",
                 "locationId": 2
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 9
-            },
-            {
-                "startDate": "2015-01-25 15:00",
-                "endDate": "2015-01-26 11:00",
-                "locationId": 14
             }
         ],
         "comments": [

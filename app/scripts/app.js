@@ -21,7 +21,8 @@ angular
     'ui.bootstrap',
     'vAccordion',
     'ui.bootstrap.datetimepicker',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'blockUI'
   ])
   .config(function ($routeProvider, $urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/home/intro/why');
@@ -104,5 +105,21 @@ angular
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
+  })
+  .run(function($rootScope, $state, blockUIConfig, commonShareService){
+    activate();
+
+    //==================== Function declaration ====================
+    function activate(){
+      $rootScope.$on("$stateChangeSuccess", function (event, tostate, toParams, fromState, fromParams) {
+          $rootScope.loginInfo = commonShareService.getLoginInfo();
+      });
+
+      //Config BlockUI
+      blockUIConfig.message = 'Please wait';
+      // Disable automatically blocking of the user interface
+      blockUIConfig.autoBlock = false;
+      blockUIConfig.templateUrl = 'views/block-ui-overlay.html';
+    }
   })
 ;

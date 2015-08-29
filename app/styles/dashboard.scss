@@ -1,24 +1,28 @@
 .trip-card{
     position: relative;
     margin-top: 60px;
-    box-shadow: none;
-    -moz-border-image: url("../images/border4.png") 35 round round;
-    -webkit-border-image: url("../images/border4.png") 35 round round;
-    border-image: url("../images/border4.png") 35 round round;
+    box-shadow: -2px 6px 42px -4px rgba(0,0,0,0.95);
     border-width: 35px;
     background: none;
 
     &.partner-trip{
-      -moz-border-image: url("../images/border5.png") 35 round round;
-      -webkit-border-image: url("../images/border5.png") 35 round round;
-      border-image: url("../images/border5.png") 35 round round;
+      md-card-content, md-card-footer, div.md-actions{
+          background-color: #FFB03C;
+      }
+      background-color: #FFB03C;
       .fullname{
         color: red;
+      }
+      .trip-title {
+        color: #686868;
+      }
+      .trip-description {
+        color: #686868;
       }
     }
 
     md-card-content, md-card-footer, div.md-actions{
-        background-color: #ECEABB;
+        background-color: #EEEEEE;
     }
 
     .avatar{
@@ -38,19 +42,19 @@
         .emirates-partner{
           font-weight: bold;
           font-size: 15px;
-          top: 5px;
+          top: -5px;
           right: 15px;
           color: red;
           position: absolute;
 
           md-icon{
-            color: yellow;
+            color: white;
             border-radius: 50%;
-            background-color: red;
-            width: 30px;
-            height: 30px;
+            background-color: gray;
+            width: 40px;
+            height: 40px;
             text-align: center;
-            padding-top: 3px;
+            padding-top: 8px;
           }
         }
 
@@ -71,6 +75,10 @@
             margin-top: 25px;
             .description-content{
                 /*copy from manage route*/
+              label{
+                font-weight: normal;
+                font-style: italic;
+              }
                 .trips{
 
                   .trip-detail{
