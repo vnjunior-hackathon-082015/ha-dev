@@ -6,6 +6,7 @@ var data_users = [
         "username": "dat_nguyen",
         "avatarURL": "images/avatar/dat_nguyen.jpg",
         "pnr": "ABC001",
+        "skywardsPoint": 224000,
         "tripsCreated": [],
         "tripsJoined": []
     },
@@ -16,6 +17,7 @@ var data_users = [
         "username": "luu_le",
         "avatarURL": "images/avatar/luu_le.jpg",
         "pnr": "ABC003",
+        "skywardsPoint": 304000,
         "tripsCreated": [],
         "tripsJoined": []
     },
@@ -26,6 +28,7 @@ var data_users = [
         "username": "hien_pham",
         "avatarURL": "images/avatar/hien_pham.jpg",
         "pnr": "ABC002",
+        "skywardsPoint": 140000,
         "tripsCreated": [
             1
         ],
@@ -40,6 +43,7 @@ var data_users = [
         "username": "hung_thai",
         "avatarURL": "images/avatar/hung_thai.jpg",
         "pnr": "ABC004",
+        "skywardsPoint": 52000,
         "tripsCreated": [
             2
         ],
@@ -54,6 +58,7 @@ var data_users = [
         "username": "anh_diep",
         "avatarURL": "images/avatar/anh_diep.jpg",
         "pnr": "ABC005",
+        "skywardsPoint": 7000,
         "tripsCreated": [
             3,
             4
