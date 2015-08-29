@@ -23,44 +23,103 @@
 
       $rootScope.activeTab = 'trip';
 
-      getTripsData();
-
-      destinationList = commonShareService.getDestination();
-
-      var promises = [];
-      for(var i = 0; i < destinationList.length; i++){
-        var promise = emiratesAPIs.getCardOfferByArea(destinationList[i].latt, destinationList[i].longtt, 100);
-        promises.push(promise);
-      }
-
-      var allPromise = $q.all(promises);
-      allPromise.then(function(responses) {
+      getTripsData().then(function(){
+        destinationList = commonShareService.getDestination();
+        var promises = [];
         for(var i = 0; i < destinationList.length; i++){
-          angular.forEach(responses[i].data['Offer'], function(offer){
-            offer.location = destinationList[i].id;
-            locationOffers.push(offer);
-          });
+          var promise = emiratesAPIs.getCardOfferByArea(destinationList[i].latt, destinationList[i].longtt, 100);
+          promises.push(promise);
         }
-        initTripsProperty();
+
+        var allPromise = $q.all(promises);
+        allPromise.then(function(responses) {
+          for(var i = 0; i < destinationList.length; i++){
+            angular.forEach(responses[i].data['Offer'], function(offer){
+              offer.location = destinationList[i].id;
+              locationOffers.push(offer);
+            });
+          }
+          initTripsProperty();
+        });
+
       });
+
     }
 
     function getTripsData(){
       vm.currentUserInfo = commonShareService.getLoginInfo();
-      vm.tripsData = commonShareService.getTrips();
-      vm.tripsData.reverse();
       vm.tripsCreated = [];
       vm.tripsJoined = [];
-      vm.tripsData.forEach(function(trip){
-        vm.currentUserInfo.tripsCreated.forEach(function(tripId){
-          if(trip.tripId == tripId){
-            vm.tripsCreated.push(trip);
-          }
+
+      return getPartnerTrip().then(function(){
+        vm.partnerTrips.reverse();
+        vm.partnerTrips.forEach(function(trip){
+          vm.currentUserInfo.tripsCreated.forEach(function(tripId){
+            if(trip.tripId == tripId){
+              vm.tripsCreated.push(trip);
+            }
+          });
+          vm.currentUserInfo.tripsJoined.forEach(function(tripId){
+            if(trip.tripId == tripId){
+              vm.tripsJoined.push(trip);
+            }
+          });
         });
-        vm.currentUserInfo.tripsJoined.forEach(function(tripId){
-          if(trip.tripId == tripId){
-            vm.tripsJoined.push(trip);
+
+        vm.tripsData = commonShareService.getTrips();
+        vm.tripsData.reverse();
+        vm.tripsData.forEach(function(trip){
+          vm.currentUserInfo.tripsCreated.forEach(function(tripId){
+            if(trip.tripId == tripId){
+              vm.tripsCreated.push(trip);
+            }
+          });
+          vm.currentUserInfo.tripsJoined.forEach(function(tripId){
+            if(trip.tripId == tripId){
+              vm.tripsJoined.push(trip);
+            }
+          });
+        });
+      });
+    }
+
+    function getPartnerTrip(){
+      var cityName = 'Dubai';
+      var noOfPax = 5;
+      var date = '31-08-2015';
+      //Get Partner Trips
+      return emiratesAPIs.getArabianAdventureTours(cityName).then(function(toursResponse){
+        var promises = [];
+        for(var i = 0; i < toursResponse.data.TourName.length; i++){
+          var promise = emiratesAPIs.getAdventureAvailability(date, noOfPax, toursResponse.data.TourName[i]);
+          promises.push(promise);
+        }
+
+        var allPromise = $q.all(promises);
+        return allPromise.then(function(responses) {
+          // Get Location Offers
+          vm.partnerTrips = [];
+          for(var i = 0; i < responses.length; i++){
+            var responseData = responses[i].data;
+            if(responseData.isAvailable){
+              //Make the pr
+              var obj = {};
+              obj.minimumCost = responseData.Price.BasePrice + i;
+              obj.tax = responseData.Price.Tax + i;
+              obj.total = responseData.Price.Total + i;
+              var partnerTrips = commonShareService.getPartnerTrips();
+              for(var j = 0; j < partnerTrips.length; j++){
+                //Right now check by name because service only return name, not id
+                if(partnerTrips[j].title == toursResponse.data.TourName[i]){
+                  partnerTrips[j].minimumCost = obj.minimumCost;
+                  partnerTrips[j].tax = obj.tax;
+                  partnerTrips[j].total = obj.total;
+                  vm.partnerTrips.push(partnerTrips[j]);
+                }
+              }
+            }
           }
+
         });
       });
     }
@@ -93,10 +152,10 @@
               vm.tripsJoined[k].destinations[i].address = destinationList[j].address;
               vm.tripsJoined[k].destinations[i].description = destinationList[j].description;
               vm.tripsJoined[k].destinations[i].locationName = destinationList[j].destination;
-              vm.tripsCreated[k].destinations[i].offers = [];
+              vm.tripsJoined[k].destinations[i].offers = [];
               angular.forEach(locationOffers, function(offer){
                 if (offer.location ==  destinationList[j].id){
-                  vm.tripsCreated[k].destinations[i].offers.push(offer);
+                  vm.tripsJoined[k].destinations[i].offers.push(offer);
                 }
               });
               break;
@@ -117,8 +176,9 @@
       })
         .then(function(answer) {
           //Reload trips
-          getTripsData();
-          initTripsProperty();
+          getTripsData().then(function(){
+            initTripsProperty();
+          });
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });

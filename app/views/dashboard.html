@@ -3,7 +3,7 @@
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
     <div class="emirates-partner">
-        <md-icon md-font-library="material-icons">star</md-icon>
+        <md-icon md-font-library="material-icons">thumb_up</md-icon>
         Emirates partner
     </div>
     <p class="fullname">{{trip.hostedBy}}</p>
@@ -79,20 +79,20 @@
 
         </div>
     </div>
-    <div class="trip-info" layout="row">
-        <div flex="25">
+    <div class="trip-info" layout="row" layout-wrap>
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">attach_money</md-icon>
             <label>{{trip.minimumCost}} {{trip.currency}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">people</md-icon>
             <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.fromDate}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.toDate}}</label>
         </div>
@@ -210,20 +210,20 @@
 
         </div>
     </div>
-    <div class="trip-info" layout="row">
-        <div flex="25">
+    <div class="trip-info" layout="row" layout-wrap>
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">attach_money</md-icon>
             <label>{{trip.minimumCost}} {{trip.currency}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">people</md-icon>
             <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.fromDate}}</label>
         </div>
-        <div flex="25">
+        <div flex-gt-sm="25" flex-sm="50">
             <md-icon md-font-library="material-icons">schedule</md-icon>
             <label>{{trip.toDate}}</label>
         </div>
