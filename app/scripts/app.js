@@ -75,7 +75,7 @@ angular
         controllerAs: 'vm'
       })
       .state('login', {
-        url: '/',
+        url: '/login',
         templateUrl: 'views/login.tmpl.html',
         controller: 'LoginController',
         controllerAs: 'vm'

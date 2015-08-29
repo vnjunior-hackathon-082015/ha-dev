@@ -66,8 +66,8 @@
           });
         });
 
-        vm.tripsData = commonShareService.getTrips();
-        vm.tripsData.reverse();
+        var tripsData = commonShareService.getTrips();
+        vm.tripsData = angular.copy(tripsData).reverse();
         vm.tripsData.forEach(function(trip){
           vm.currentUserInfo.tripsCreated.forEach(function(tripId){
             if(trip.tripId == tripId){

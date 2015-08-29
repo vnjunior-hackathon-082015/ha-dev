@@ -54,8 +54,8 @@
               }
 
               //Get Customer trips
-              vm.listTrips = commonShareService.getTrips();
-              vm.listTrips.reverse();
+              var tripsData = commonShareService.getTrips();
+              vm.listTrips = angular.copy(tripsData).reverse();
 
               //Add info for customer trips
               for(var k = 0; k < vm.listTrips.length; k++){
