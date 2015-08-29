@@ -23,5 +23,8 @@
     "angular-block-ui": "~0.2.0"
   },
   "appPath": "app",
-  "moduleName": "gitRepoTestApp"
+  "moduleName": "gitRepoTestApp",
+  "resolutions": {
+    "angular": ">= 1.0.8"
+  }
 }

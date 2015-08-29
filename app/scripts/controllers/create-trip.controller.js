@@ -37,6 +37,7 @@
       }];
       vm.onAddDestination = onAddDestination;
       vm.confirmTrip = confirmTrip;
+      vm.isShown = isShown;
       activate();
 
 
@@ -71,6 +72,9 @@
         vm.allHotels = _allHotelsList;
       };
 
+      function isShown(item){
+        return item.destination === "JW Marriot Marque";
+      };
       /**
        * Search for contacts.
        */
@@ -179,8 +183,8 @@
         loginInfo.tripsCreated.push(tripId);
         if(tripObj.hotel !== null){
           emiratesAPIs.getServiceEligibility().then(function(response){
-            var point = response.data.Benefit[0].CardValues[0].Value;
-            var test = commonShareService.setSkywardsPoint(point);
+            var point =parseInt(response.data.Benefit[0].CardValues[0].Value);
+            var setPoint = commonShareService.setSkywardsPoint(point);
           });
         }
         commonShareService.setLoginInfo(loginInfo);
