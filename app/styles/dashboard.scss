@@ -42,19 +42,19 @@
         .emirates-partner{
           font-weight: bold;
           font-size: 15px;
-          top: 5px;
+          top: -5px;
           right: 15px;
           color: red;
           position: absolute;
 
           md-icon{
-            color: yellow;
+            color: white;
             border-radius: 50%;
-            background-color: red;
-            width: 30px;
-            height: 30px;
+            background-color: gray;
+            width: 40px;
+            height: 40px;
             text-align: center;
-            padding-top: 3px;
+            padding-top: 8px;
           }
         }
 
