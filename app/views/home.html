@@ -2,13 +2,18 @@
 	<div ui-view="bubble" class="bubble"></div>
 	<div style="margin-top: 50px;">
 		<div class="menu-home col-sm-2 col-md-2 col-lg-2">
-			<ul>
-				<li href="#" ui-sref="home.intro.why">Stop over is so excited and easy</li>
-				<li href="#" ui-sref="home.intro.eligibility">Hotel Eligibility</li>
-				<li href="#" ui-sref="home.intro.card">Card offers</li>
-			</ul>
+			<u class="menu">
+				<li class="menu-item">
+					<a href="#" ui-sref="home.intro.why" ng-click="selectItem(1)" ng-class="isMenuSelected(1)?'itemSelected':''">Excited Stop over</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" ui-sref="home.intro.eligibility" ng-click="selectItem(2)" ng-class="isMenuSelected(2)?'itemSelected':''">Eligibility</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" ui-sref="home.intro.card" ng-click="selectItem(3)" ng-class="isMenuSelected(3)?'itemSelected':''">Card offers</a>
+				</li>
+			</u>
 		</div>
 		<div ui-view="info" class="info"></div>
 	</div>
-	
 </div>
