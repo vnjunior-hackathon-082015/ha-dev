@@ -19,6 +19,11 @@
                   </md-button>
                 </v-pane-header>
                 <v-pane-content>
+                  <div class="hotel-information" ng-if="trip.hotel != undefined">
+                    <i class="material-icons">hotel</i>
+                    <span class="hotel-name">{{trip.hotel.destination}}</span>
+                    <span>{{trip.hotel.address}}</span>
+                  </div>
 
                   <div class="trips" >
                     <div class="trip-detail" ng-repeat="des in trip.destinations">
@@ -149,6 +154,11 @@
                 </v-pane-header>
                 <v-pane-content>
 
+                  <div class="hotel-information" ng-if="trip.hotel != undefined">
+                    <i class="material-icons">hotel</i>
+                    <span class="hotel-name">{{trip.hotel.destination}}</span>
+                    <span>{{trip.hotel.address}}</span>
+                  </div>
                   <div class="trips" >
                     <div class="trip-detail" ng-repeat="des in trip.destinations">
                       <div class="date-time">{{des.startDate}}</div>

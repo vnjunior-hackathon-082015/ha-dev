@@ -171,3 +171,33 @@ md-dialog.create-trip-popup{
     vertical-align: middle;
   }
 }
+
+.hotel-information{
+  margin-left: 94px;
+  border-bottom: 1px solid rgb(160, 158, 158);
+  margin-bottom: 15px;
+  i{
+    font-size: 63px;
+    padding-left: 11px;
+    vertical-align: middle;
+  }
+  span:first-child{
+    font-size: 16px;
+    margin-left: 28px;
+    vertical-align: middle;
+    padding: 5px;
+    background-color: rgb(255, 87, 0);
+    color: #fff;
+    border-radius: 15px;
+
+  }
+  span:last-child{
+    font-size: 12px;
+  }
+  .hotel-name{
+    padding: 8px;
+    background-color: rgb(255, 87, 0);
+    color: #fff;
+    border-radius: 15px;
+  }
+}
